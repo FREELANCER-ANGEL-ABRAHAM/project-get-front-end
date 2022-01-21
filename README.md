@@ -1,3 +1,7 @@
+# Purpose of App
+
+The main purpose of the application is to fulfill the objective of providing the visiting user with a unique code after completing the necessary steps.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
