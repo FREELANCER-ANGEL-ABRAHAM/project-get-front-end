@@ -8,6 +8,7 @@ import Panel from './Panel';
 import NotFound from './NotFound';
 import Layout from './components/Layout';
 import NavigationBar from './components/NavigationBar';
+import Result from './Result';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/" element={<StartPage />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/panel" element={<Panel />} />
+          <Route path="/result" element={<Result />} />
           <Route element={<NotFound />} />
         </Routes>
       </Layout>
