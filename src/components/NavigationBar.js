@@ -1,4 +1,4 @@
-import { Nav, Navbar, Containerfluid } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import logo from '../assets/logo.svg'
 
