@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import CardLink from "./components/CardLink";
-import FloatingActionButton from "./components/FloatingActionButton";
 
 const Panel = () => {
 
