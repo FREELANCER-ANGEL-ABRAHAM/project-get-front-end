@@ -1,12 +1,22 @@
-import { Card, Row } from "react-bootstrap";
-import styled from "styled-components";
+import { useState } from "react";
+import { Container, Row } from "react-bootstrap";
+import CardLink from "./components/CardLink";
+import FloatingActionButton from "./components/FloatingActionButton";
 
 const Panel = () => {
+
+  let exampleDb = [
+    <CardLink />,
+    <CardLink />,
+    <CardLink />,
+    <CardLink />
+  ]
+  
+  const [items, updateArray] = useState()
+
   return (
-    <Row>
-      <Card className="col-4 mx-auto shadow-sm">
-        <Card.Body>This is some text within a card body.</Card.Body>
-      </Card>
+    <Row className="mt-2 gy-4">
+      {exampleDb}
     </Row>
   );
 };
