@@ -29,28 +29,28 @@ function CreateLink() {
                 </Form.Group>
                 <Form.Group className='col-12 col-md-6 mt-2 mt-sm-0'>
                   <Form.Label>Titulo. *</Form.Label>
-                  <Form.Control placeholder='Titulo' id='link-titulo' />
+                  <Form.Control placeholder='Titulo' id='link_titulo' name='link_titulo' />
                 </Form.Group>
               </Row>
               <Form.Group className='mt-2'>
                 <Form.Label>Descripcion. *</Form.Label>
                 <div>
-                  <textarea className='w-100' rows={5} id='link-descripcion'></textarea>
+                  <textarea className='w-100' rows={5} id='link_descripcion' name='link_descripcion'></textarea>
                 </div>
               </Form.Group>
               <Row className='mt-sm-1'>
                 <Form.Group className='col-12 col-sm-6 mt-2 mt-sm-0'>
                   <Form.Label>Nombre del boton. *</Form.Label>
-                  <Form.Control placeholder='Nombre del boton' id='boton-nombre' required={true} />
+                  <Form.Control placeholder='Nombre del boton' id='boton_nombre' name='boton_nombre' required={true} />
                 </Form.Group>
                 <Form.Group className='col-12 col-sm-6 mt-2 mt-sm-0'>
                   <Form.Label>Link del boton. *</Form.Label>
-                  <Form.Control placeholder='Link del boton' id='boton-link' required={true} />
+                  <Form.Control placeholder='Link del boton' id='boton_link' name='boton_link' required={true} />
                 </Form.Group>
               </Row>
               <Form.Group className='mt-2'>
                 <Form.Label>Imagen. *</Form.Label>
-                <Form.Select id='imagen-select' required={true} onChange={handleShowImageSelector} >
+                <Form.Select id='imagen_select' name='imagen_select' required={true} onChange={handleShowImageSelector} >
                   <option disabled="true">Selecciona una imagen</option>
                   <option value="youtube">Youtube</option>
                   <option value="instagram">Instagram</option>
@@ -60,19 +60,19 @@ function CreateLink() {
                 </Form.Select>
               </Form.Group>
               {showImageSelector ?
-                <Form.Group id='imagen-otro-select' controlId="formFile" className="mt-2">
+                <Form.Group controlId="formFile" className="mt-2">
                   <Form.Label>Seleccione una imagen.</Form.Label>
-                  <Form.Control type="file" />
+                  <Form.Control type="file" id='imagen_otro_select' name='imagen_otro_select' />
                 </Form.Group> : null}
               <p className='mt-4 text-center fw-bold'>Editar informacion del resultado.</p>
               <Row>
                 <Form.Group className='col-12 col-sm-6 mt-2 mt-0'>
                   <Form.Label>Detalle del resultado. *</Form.Label>
-                  <Form.Control id='resultado-detalle' placeholder='Detalle del resultado' required={true} />
+                  <Form.Control id='resultado_detalle' name='resultado_detalle' placeholder='Detalle del resultado' required={true} />
                 </Form.Group>
                 <Form.Group className='col-12 col-sm-6 mt-2 mt-0'>
                   <Form.Label>Contenido del resultado. *</Form.Label>
-                  <Form.Control id='resultado-contenido' placeholder='Contenido del resultado' required={true} />
+                  <Form.Control id='resultado_contenido' name='resultado_contenido' placeholder='Contenido del resultado' required={true} />
                 </Form.Group>
               </Row>
               <div className='d-grid gap-1 mt-3'>

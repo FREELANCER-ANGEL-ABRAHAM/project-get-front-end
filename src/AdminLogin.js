@@ -32,10 +32,10 @@ const AdminLogin = () => {
             <StyledImage src={userLogo}/>
             <Form className="mt-4">
               <Form.Group className="mb-3" controlId="user">
-                <Form.Control type="text" placeholder="Nombre de usuario" style={{height: "36px"}} required="true" />
+                <Form.Control type="text" id="user" name="user" placeholder="Nombre de usuario" style={{height: "36px"}} required="true" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="password">
-                <Form.Control type="password" placeholder="Contrasena" required="true" />
+                <Form.Control type="password" id="password" name="password" placeholder="Contraseña" required="true" />
               </Form.Group>
               <CustomButton children="Iniciar" style={{padding: "1rem"}} onClick={() => navigate('/panel')} />
             </Form>
