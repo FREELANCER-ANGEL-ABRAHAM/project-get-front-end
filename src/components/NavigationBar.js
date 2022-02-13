@@ -1,6 +1,6 @@
 import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
-import logo from '../assets/logo.svg';
+import webLogo from '../assets/logo.svg';
 
 
 const Styles = styled.div`
@@ -13,22 +13,23 @@ const Styles = styled.div`
 
   .navbar-brand {
     color: #FFFF;
+    margin-right: 0;
   }
 `
 
-const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay}) => {
+const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWidth, logoHeight, href}) => {
 
   return (
     <Styles>
       <Navbar>
         <Navbar.Brand>
-          <a href='/'>
+          <a href={href || '/'}>
             <img
-              src={logo}
-              width="57"
-              height="57"
+              src={logo || webLogo}
+              width={logoWidth || "57px"}
+              height={logoHeight || "57px"}
               className={brandDisplay || "d-none"}
-              alt="React Bootstrap logo"
+              alt="Logo"
             />
           </a>
         </Navbar.Brand>

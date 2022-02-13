@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-const CustomButton = ({ className, children, onClick, type, fontSize }) => {
-  return (
-    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize}>
-      {children}
-    </Styles>
-  );
-};
-
 const Styles = styled.button`
 
   @media (max-width: 768px) {
@@ -28,12 +20,20 @@ const Styles = styled.button`
   color: #FFFF;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 1rem;
+ 
   width: 100%;
 
   &:hover {
     background-color: #B01313;
   }
 `
+
+const CustomButton = ({ className, children, onClick, type, fontSize, style }) => {
+  return (
+    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} style={style} >
+      {children}
+    </Styles>
+  );
+};
 
 export default CustomButton;

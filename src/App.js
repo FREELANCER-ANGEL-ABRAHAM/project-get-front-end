@@ -13,20 +13,36 @@ import Result from './Result';
 import CreateLink from './CreateLink';
 import Footer from './components/Footer';
 import ModifyLink from './ModifyLink';
+import backArrow from './assets/backarrow.svg'
 
 function App() {
 
   let location = useLocation()
   let navbarComponent
+  let footerComponent
 
   if(location.pathname === "/panel") {
-    navbarComponent = <NavigationBar navbarTitle="Mis links" settingsDisplay="d-block" />
+    navbarComponent = <NavigationBar navbarTitle="Mis links" brandDisplay="d-block" />
+    footerComponent = null
   } else if(location.pathname === "/create") {
     navbarComponent = <NavigationBar navbarTitle="Crear link" />
   } else if(location.pathname === "/modify"){
     navbarComponent = <NavigationBar navbarTitle="Modificar link" />
+  } else if(location.pathname === "/admin") {
+    footerComponent = <Footer actionText="Regresar" actionHref="/" />
+    navbarComponent = <NavigationBar brandDisplay="d-block" settingsDisplay="d-none"/>
+  } else if(location.pathname === "/settings"){
+    footerComponent = null
+    navbarComponent = <NavigationBar 
+                        brandDisplay="d-block" 
+                        settingsDisplay="d-none" 
+                        logo={backArrow} 
+                        logoWidth="57px" 
+                        logoHeight="57px" 
+                        href="/panel" />
   } else {
-    navbarComponent = <NavigationBar brandDisplay="d-block" />
+    navbarComponent = <NavigationBar brandDisplay="d-block" settingsDisplay="d-none"/>
+    footerComponent = <Footer />
   }
 
   return (
@@ -41,9 +57,10 @@ function App() {
           <Route path="/create" element={<CreateLink />} />
           <Route path="/modify:id" element={<ModifyLink />} />
           <Route path="/settings" element={<Settings />} />
-          <Route element={<NotFound />} />
+          <Route path="*" exact="true" element={<NotFound />} />
         </Routes>
       </Layout>
+      {footerComponent}
       
     </React.Fragment>
   );

@@ -1,31 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Footer() {
+function Footer({actionText, actionHref}) {
 
   const Footer = styled.footer`
-    position: sticky;
-    width: 100%;
+    position: relative;
     height: 7.688rem;
     background: #F23131;
-    text-align center;
     color: white;
-    margin-top: 5rem;
 
-    &:before {
-      content:"";
-      position:absolute;
-      top:-45px;
-      height:45px;
-      left:0;
-      right:0;
-      background:linear-gradient(to bottom left, transparent 49%, #F23131 50%);
+    .copyright {
+      position: absolute;
+      width: 100%;
+      color: #fff;
+      line-height: 40px;
+      font-size: 0.75em;
+      font-weight: 400;
+      text-align: center;
+      bottom:0;
+    }
+
+    .action {
+      position: absolute;
+      width: 100%;
+      color: #fff;
+      line-height: 40px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-align: center;
+      bottom:3rem;
     }
   `
 
   return (
     <Footer>
-      <h1>Lol</h1>
+      <a href={actionHref}>
+        <p className="action">
+          {actionText}
+        </p>
+      </a>
+      <p className="copyright">
+        <span style={{fontWeight: "700"}}>Copyright</span> © Red Crecer
+      </p>
     </Footer>
   );
 }

@@ -22,25 +22,27 @@ const StyledImage = styled.img`
 
 const AdminLogin = () => {
 
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <Row className="m-2 m-md-0" style={{height: "80vh", overflow: "hidden"}}>
-      <Card className="col-12 col-md-6 col-lg-4 mx-auto my-auto d-flex shadow pt-4 text-center">
-        <Card.Body style={{fontSize: "1em"}} style={{position: "relative"}}>
-          <StyledImage src={userLogo}/>
-          <Form className="mt-4">
-            <Form.Group className="mb-3" controlId="user">
-              <Form.Control type="text" placeholder="Nombre de usuario" style={{height: "36px"}} required="true" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="password">
-              <Form.Control type="password" placeholder="Contrasena" required="true" />
-            </Form.Group>
-            <CustomButton children="Iniciar" />
-          </Form>
-        </Card.Body>
-      </Card>
-    </Row>
+    <div style={{position: "absolute", top: "calc(70% - 6.563rem - 7.688rem)", margin: "0 auto", left:"0", right: "0"}}>
+      <Row className="m-2 m-md-0">
+        <Card className="col-12 col-md-6 col-lg-4 mx-auto shadow pt-4 text-center">
+          <Card.Body style={{fontSize: "1em"}} style={{position: "relative"}}>
+            <StyledImage src={userLogo}/>
+            <Form className="mt-4">
+              <Form.Group className="mb-3" controlId="user">
+                <Form.Control type="text" placeholder="Nombre de usuario" style={{height: "36px"}} required="true" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Control type="password" placeholder="Contrasena" required="true" />
+              </Form.Group>
+              <CustomButton children="Iniciar" style={{padding: "1rem"}} onClick={() => navigate('/panel')} />
+            </Form>
+          </Card.Body>
+        </Card>
+      </Row>
+    </div>
   );
 };
 
