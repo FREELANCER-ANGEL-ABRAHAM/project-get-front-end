@@ -5,7 +5,7 @@ import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
 import { useNavigate } from "react-router-dom";
 import LinkSearchModal from "./components/LinkSearchModal";
-
+import authLink from "./service/authLink";
 
 const Panel = () => {
 
@@ -19,6 +19,8 @@ const Panel = () => {
   ]
   
   const [modalShow, setModalShow] = useState(false)
+
+  console.log(authLink.getAllLinks());
 
   return (
     <>

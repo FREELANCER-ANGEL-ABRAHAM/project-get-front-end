@@ -1,7 +1,7 @@
 import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import webLogo from '../assets/logo.svg';
-
+import logout from '../service/authClient';
 
 const Styles = styled.div`
   .navbar {
@@ -17,7 +17,7 @@ const Styles = styled.div`
   }
 `
 
-const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWidth, logoHeight, href}) => {
+const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWidth, logoHeight, href, logoutTextDisplay}) => {
 
   return (
     <Styles>
@@ -38,6 +38,11 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWi
           <span className={settingsDisplay}>
             <a href='/settings'>
               <i className='bi bi-gear-fill fa-lg text-light' style={{fontSize: "1.5em"}} ></i>
+            </a>
+            <a onClick={() => logout()} className={logoutTextDisplay || "d-none"}>
+              <p>
+                logout
+              </p>
             </a>
           </span>
         </Navbar.Text>

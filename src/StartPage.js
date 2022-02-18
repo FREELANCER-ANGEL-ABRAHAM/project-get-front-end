@@ -5,16 +5,17 @@ import lock from "./assets/lock.svg"
 import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const StartPage = () => {
+
 
   const navigate = useNavigate()
 
   const [enableButton, setEnableButton] = useState(true)
 
   return (
-    <div className="col-12 col-md-6 col-lg-4" style={{position: "absolute", top: "calc(45% - 105px - 123px)", margin: "0 auto", left:"0", right: "0"}}>
+    <div className="col-12 col-md-6 col-lg-4" style={{left: "50%", top: "50%", position: "absolute", transform: "translate(-50%, -50%)"}}>
       <div className="p-2">
         <Card className="mx-auto shadow p-3 text-center" style={{border: "none",}}>
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>

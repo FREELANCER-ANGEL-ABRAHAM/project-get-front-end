@@ -22,7 +22,7 @@ function App() {
   let footerComponent
 
   if(location.pathname === "/panel") {
-    navbarComponent = <NavigationBar navbarTitle="Mis links" brandDisplay="d-block" />
+    navbarComponent = <NavigationBar navbarTitle="Mis links" brandDisplay="d-block" logoutTextDisplay="d-block" />
     footerComponent = null
   } else if(location.pathname === "/create") {
     navbarComponent = <NavigationBar navbarTitle="Crear link" />
