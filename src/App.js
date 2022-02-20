@@ -55,7 +55,7 @@ function App() {
           <Route path="/panel" element={<Panel />} />
           <Route path="/result" element={<Result />} />
           <Route path="/create" element={<CreateLink />} />
-          <Route path="/modify:id" element={<ModifyLink />} />
+          <Route path="/modify/:id" element={<ModifyLink />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="*" exact="true" element={<NotFound />} />
         </Routes>

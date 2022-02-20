@@ -30,7 +30,6 @@ const AdminLogin = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = e.target.user.value;
@@ -40,7 +39,7 @@ const AdminLogin = () => {
           navigate("/panel");
           window.location.reload();
         }, (error) => {
-          console.log(error.response.data.error.message);
+          //console.log(error.response.data.error.message);
           const response = error.response.data.error.message;
 
           setErrorMessage(response);

@@ -1,7 +1,7 @@
-import { Navbar } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import webLogo from '../assets/logo.svg';
-import logout from '../service/authClient';
+import TokenService from '../service/authToken';
 
 const Styles = styled.div`
   .navbar {
@@ -39,7 +39,7 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWi
             <a href='/settings'>
               <i className='bi bi-gear-fill fa-lg text-light' style={{fontSize: "1.5em"}} ></i>
             </a>
-            <a onClick={() => logout()} className={logoutTextDisplay || "d-none"}>
+            <a href='/admin' onClick={() => TokenService.removeUser()} to="/admin" className={logoutTextDisplay || "d-none"}>
               <p>
                 logout
               </p>
