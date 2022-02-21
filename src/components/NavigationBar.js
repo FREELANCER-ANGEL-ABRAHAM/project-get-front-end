@@ -29,7 +29,7 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, l
         const response = await AuthLinkProvider.getLogo();
         //console.log(response);
         if(response){
-          setLogo(response.image);
+          setLogo(response);
         }
       } catch (error) {
         console.error(error);
@@ -43,7 +43,7 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, l
         <Navbar.Brand>
           <a href={href || '/'}>
             <img
-              src={logo || webLogo}
+              src={logo.image || webLogo}
               width={logoWidth || "57px"}
               height={logoHeight || "57px"}
               className={brandDisplay || "d-none"}
