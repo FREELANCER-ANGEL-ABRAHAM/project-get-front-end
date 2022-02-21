@@ -12,7 +12,6 @@ const Styles = styled.div`
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-
   .navbar-brand {
     color: #FFFF;
     margin-right: 0;

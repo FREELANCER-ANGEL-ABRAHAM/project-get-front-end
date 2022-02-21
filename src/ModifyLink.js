@@ -35,8 +35,8 @@ const ModifyLink = () => {
         if(response){
           setLink(response);
         }
-      } catch (err) {
-        console.error(err);
+      } catch (error) {
+        console.error(error);
       }
     })();
   }, []);
@@ -76,8 +76,8 @@ const ModifyLink = () => {
       setPictureValue(e.target.files[0].name);
       value = e.target.files[0];
     }
-    setLink((Link) => {
-      return { ...Link, [name]: value };
+    setLink((link) => {
+      return { ...link, [name]: value };
     });
   };
  

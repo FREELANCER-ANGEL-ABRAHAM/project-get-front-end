@@ -1,19 +1,15 @@
 import styled from "styled-components";
 
 const Styles = styled.button`
-
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
-
   @media (min-width: 772px) {
     font-size: 1.5rem;
   }
-
   @media (min-width: 996px) {
     font-size: 2.25rem;
   }
-
   border: none;
   border-radius: 5px;
   background-color: #F23131;
@@ -22,7 +18,6 @@ const Styles = styled.button`
   text-transform: uppercase;
  
   width: 100%;
-
   &:hover {
     background-color: #B01313;
   }

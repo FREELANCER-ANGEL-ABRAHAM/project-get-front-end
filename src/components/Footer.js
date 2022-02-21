@@ -9,7 +9,6 @@ function Footer({actionText, actionHref}) {
     height: 7.688rem;
     background: #F23131;
     color: white;
-
     .copyright {
       position: absolute;
       width: 100%;
@@ -20,7 +19,6 @@ function Footer({actionText, actionHref}) {
       text-align: center;
       bottom:0;
     }
-
     .action {
       position: absolute;
       width: 100%;

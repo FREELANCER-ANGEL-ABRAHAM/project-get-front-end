@@ -24,8 +24,8 @@ const Settings = ()  => {
       setLogo({});
       navigate("/panel");
       window.location.reload();
-    } catch (err) {
-      const response = err.response.data.error.message; 
+    } catch (error) {
+      const response = error.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {
@@ -44,8 +44,8 @@ const Settings = ()  => {
       setPictureValue(e.target.files[0].name);
       value = e.target.files[0];
     }
-    setLogo((Logo) => {
-      return { ...Logo, [name]: value };
+    setLogo((logo) => {
+      return { ...logo, [name]: value };
     });
   };
 
