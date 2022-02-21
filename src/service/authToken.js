@@ -3,7 +3,7 @@ const getLocalRefreshToken = () => {
 }
 
 const getLocalAccessToken = () => {
-  return JSON.parse(localStorage.getItem("Token"));;
+  return JSON.parse(localStorage.getItem("Token"));
 }
 
 const updateNewAccessToken = (token) => {

@@ -47,8 +47,8 @@ function CreateLink() {
       setLink({});
       navigate("/panel");
       window.location.reload();
-    } catch (error) { 
-      const response = error.response.data.error.message;
+    } catch (err) { 
+      const response = err.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {

@@ -38,8 +38,8 @@ const AdminLogin = () => {
       authClient.login(password, user).then(() => {
         navigate("/panel");
         window.location.reload();
-      }, (error) => {
-        const response = error.response.data.error.message;
+      }, (err) => {
+        const response = err.response.data.error.message;
 
         setErrorMessage(response);
 
