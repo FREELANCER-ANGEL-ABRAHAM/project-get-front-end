@@ -22,12 +22,12 @@ function App() {
   let footerComponent
 
   if(location.pathname === "/panel") {
-    navbarComponent = <NavigationBar navbarTitle="Mis links" brandDisplay="d-block" settingsDisplay="d-block" logoutDisplay="d-block" />
+    navbarComponent = <NavigationBar navbarTitle="Mis links" brandDisplay="d-block" logoutTextDisplay="d-block" />
     footerComponent = null
   } else if(location.pathname === "/create") {
-    navbarComponent = <NavigationBar navbarTitle="Crear link" settingsDisplay="d-block" logoutDisplay="d-block" />
+    navbarComponent = <NavigationBar navbarTitle="Crear link" />
   } else if(location.pathname === "/modify"){
-    navbarComponent = <NavigationBar navbarTitle="Modificar link" settingsDisplay="d-block" logoutDisplay="d-block" />
+    navbarComponent = <NavigationBar navbarTitle="Modificar link" />
   } else if(location.pathname === "/admin") {
     footerComponent = <Footer actionText="Regresar" actionHref="/" />
     navbarComponent = <NavigationBar brandDisplay="d-block" settingsDisplay="d-none"/>
@@ -36,7 +36,6 @@ function App() {
     navbarComponent = <NavigationBar 
                         brandDisplay="d-block" 
                         settingsDisplay="d-none" 
-                        logoutDisplay="d-block"
                         logo={backArrow} 
                         logoWidth="57px" 
                         logoHeight="57px" 

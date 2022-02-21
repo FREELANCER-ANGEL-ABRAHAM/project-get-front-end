@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
-
+import { useState } from "react";
  
 function CreateLink() {
 
@@ -42,13 +42,14 @@ function CreateLink() {
     form_data.append('status', 'disable');
     form_data.append('visibility', 'visible');
     try {
-      await AuthLinkProvider.saveLink(form_data);
+      //console.log(form_data);
+      const response = await AuthLinkProvider.saveLink(form_data);
       setPictureValue();
       setLink({});
       navigate("/panel");
       window.location.reload();
-    } catch (err) { 
-      const response = err.response.data.error.message;
+    } catch (error) { 
+      const response = error.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {
@@ -65,7 +66,8 @@ function CreateLink() {
       value = e.target.files[0];
     }
     setLink((link) => {
-      return { ...link, [name]: value };
+      const gestor = { ...link, [name]: value };
+      return gestor;
     });
   };
 
