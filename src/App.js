@@ -1,7 +1,7 @@
 import './css/App.css';
 import './sass/main.scss';
 import React from 'react';
-import { BrowserRouter as Route, Routes, useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
 import StartPage from './StartPage';
 import AdminLogin from './AdminLogin';
 import Panel from './Panel';

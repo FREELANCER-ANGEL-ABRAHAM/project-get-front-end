@@ -32,7 +32,7 @@ const ModifyLink = () => {
   useEffect(() => {
     ( async () => {
       try {
-        await AuthLinkProvider.getLinkById(id);
+        const response = await AuthLinkProvider.getLinkById(id);
         if(response){
           setLink(response);
         }
