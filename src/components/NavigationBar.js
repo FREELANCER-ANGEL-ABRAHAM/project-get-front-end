@@ -2,6 +2,8 @@ import { Button, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import webLogo from '../assets/logo.svg';
 import TokenService from '../service/authToken';
+import { useState, useEffect } from "react";
+import AuthLinkProvider from '../service/authLink';
 
 const Styles = styled.div`
   .navbar {
@@ -17,7 +19,23 @@ const Styles = styled.div`
   }
 `
 
-const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logo, logoWidth, logoHeight, href, logoutTextDisplay}) => {
+const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, logoHeight, href, logoutTextDisplay}) => {
+  const [logo, setLogo] = useState({
+    image: webLogo
+  })
+  useEffect(() => {
+    ( async () => {
+      try {
+        const response = await AuthLinkProvider.getLogo();
+        //console.log(response);
+        if(response){
+          setLogo(response.image);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   return (
     <Styles>

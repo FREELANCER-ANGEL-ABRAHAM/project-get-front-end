@@ -1,20 +1,20 @@
 import React from 'react';
-import {Card, Form, Button, Row, Alert} from 'react-bootstrap'
+import {Card, Form, Button, Row, Alert, image} from 'react-bootstrap'
 import styled from 'styled-components';
-import { useState } from "react";
+import { useState  } from "react";
+import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
 
-const ImagePreview = styled.div`
-  background: #C4C4C4;
-  border-radius: 5px;
-  text-align: center;
-  height: 310px;
-`
+const style = {
+
+}
+
 
 const Settings = ()  => {
   const [pictureValue, setPictureValue] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
   const [logo, setLogo] = useState({
     image: [],
   });
@@ -44,6 +44,8 @@ const Settings = ()  => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+
     let { name, value, type } = e.target;
     if (type === 'file') {
       setPictureValue(e.target.files[0].name);
@@ -90,9 +92,7 @@ const Settings = ()  => {
         
         <Row className='w-100'>
           <div className='col-12 col-sm-6 col-md-4 mx-auto'>
-            <ImagePreview className='d-flex mt-2'>
-              <p className='my-auto mx-auto'>Preview</p>
-            </ImagePreview>
+            <img src={imagePreview} className='d-flex mt-2' style={{background: '#C4C4C4', borderRadius: '5px!important', height: '310px', width: '410px'}}/>
           </div>
         </Row>
       </div>

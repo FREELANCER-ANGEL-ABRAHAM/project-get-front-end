@@ -33,7 +33,16 @@ const getCurrentLink = async () => {
     console.log(error);
   }
 }
+const getLogo = async() => {
+  try {
+    const res = await axios.get('http://localhost:80/api/logo');
+    const logo = res.data.logo;
 
+    return logo;
+  } catch (error) {
+    console.log(error);
+  }
+}
 const getLinkById = async (id) => {
   try {
     const token = TokenService.getUser();
@@ -104,6 +113,7 @@ const AuthLinkProvider = {
   saveLink,
   getLinkById,
   saveLogo,
+  getLogo,
 }
 
 export default AuthLinkProvider;
