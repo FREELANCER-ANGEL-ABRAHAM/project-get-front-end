@@ -72,6 +72,18 @@ const deleteLink = async (id) => {
  return res;
 }
 
+const saveLogo = async (values) => {
+  const token = TokenService.getUser();
+  const res = await axios.post('http://localhost:80/api/create-logo', values,  {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data',
+    }
+  });
+
+  return res;
+}
+
 const saveLink = async (values) => {
   const token = TokenService.getUser();
   const res = await axios.post('http://localhost:80/api/create-link', values,  {
@@ -91,6 +103,7 @@ const AuthLinkProvider = {
   deleteLink,
   saveLink,
   getLinkById,
+  saveLogo,
 }
 
 export default AuthLinkProvider;
