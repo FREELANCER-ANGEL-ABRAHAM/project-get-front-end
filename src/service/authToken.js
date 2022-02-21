@@ -1,5 +1,3 @@
-const axios = require('axios');
-
 const getLocalRefreshToken = () => {
   const user = JSON.parse(localStorage.getItem("refreshToken"));
   return user;
@@ -21,8 +19,7 @@ const getUser = () => {
 };
 
 const setUser = (user) => {
-  //   console.log(JSON.stringify(user));
-  localStorage.setItem("Token", JSON.stringify(user.accessToken)); //user = {accessToken : " ", refreshToken: " "}
+  localStorage.setItem("Token", JSON.stringify(user.accessToken));
   localStorage.setItem("refreshToken", JSON.stringify(user.refreshToken));
 };
 
