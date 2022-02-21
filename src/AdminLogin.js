@@ -35,23 +35,22 @@ const AdminLogin = () => {
     const user = e.target.user.value;
     const password = e.target.password.value;
     try {
-      const resUser = authClient.login(password, user).then(() => {
-          navigate("/panel");
-          window.location.reload();
-        }, (error) => {
-          //console.log(error.response.data.error.message);
-          const response = error.response.data.error.message;
+      authClient.login(password, user).then(() => {
+        navigate("/panel");
+        window.location.reload();
+      }, (error) => {
+        const response = error.response.data.error.message;
 
-          setErrorMessage(response);
+        setErrorMessage(response);
 
-          if(response) {
-            setError(true);
-          }
+        if (response) {
+          setError(true);
         }
+      }
       );
     } catch (err) {
       console.log(err);
-    };
+    }
   }
 
   return (

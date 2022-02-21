@@ -1,4 +1,4 @@
-import { Card, Row, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
 import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
@@ -29,7 +29,6 @@ const StartPage = () => {
         if(response){
           setLinks(response);
         }
-        //console.log(response._id);
       } catch (error) {
         console.error(error);
       }

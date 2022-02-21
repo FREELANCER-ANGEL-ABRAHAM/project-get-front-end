@@ -29,7 +29,6 @@ const Panel = () => {
         const response = await AuthLinkProvider.getAllLinks(currentPage);
         setLinks(response.docs);
         setTotalPages(response.totalPages);
-        //console.log(response.totalPages);
       } catch (error) {
         console.error(error);
       }
@@ -72,7 +71,6 @@ const Panel = () => {
         mainButtonStyles={{ backgroundColor: "#F23131" }}
         actionbuttonstyles={{ backgroundColor: "blue" }}
         icon={<i className="bi bi-list"></i>}
-        // event={event}
         alwaysShowTitle={true}
       >
         <Action text="Crear link" onClick={() => navigate('/create')} >

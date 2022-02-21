@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import AuthLinkProvider from './service/authLink';
 
@@ -32,7 +32,7 @@ const ModifyLink = () => {
   useEffect(() => {
     ( async () => {
       try {
-        const response = await AuthLinkProvider.getLinkById(id);
+        await AuthLinkProvider.getLinkById(id);
         if(response){
           setLink(response);
         }
@@ -55,7 +55,7 @@ const ModifyLink = () => {
     form_data.append('detail_result', link.detail_result);
     form_data.append('contain_result', link.contain_result);
     try {
-      const response = await AuthLinkProvider.updatelink(form_data);
+      await AuthLinkProvider.updatelink(form_data);
       setPictureValue();
       setLink({});
       navigate("/panel");
@@ -78,8 +78,7 @@ const ModifyLink = () => {
       value = e.target.files[0];
     }
     setLink((link) => {
-      const gestor = { ...link, [name]: value };
-      return gestor;
+      return { ...link, [name]: value };
     });
   };
  

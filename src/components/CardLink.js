@@ -19,7 +19,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
-      const response = await AuthLinkProvider.updatelink(values);
+      await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
     } catch (error) {
@@ -34,7 +34,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
 
   const handleDeleteLink = async () => {
     try {
-      const response = await AuthLinkProvider.deleteLink(id);
+      await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (error) {
       const response = error.response.data.error.message;

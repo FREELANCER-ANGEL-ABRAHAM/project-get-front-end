@@ -1,4 +1,4 @@
-import { Button, Navbar } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import webLogo from '../assets/logo.svg';
 import TokenService from '../service/authToken';
@@ -27,7 +27,6 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, l
     ( async () => {
       try {
         const response = await AuthLinkProvider.getLogo();
-        //console.log(response);
         if(response){
           setLogo(response);
         }

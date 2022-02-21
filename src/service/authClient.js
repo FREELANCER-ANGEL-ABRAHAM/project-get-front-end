@@ -7,7 +7,6 @@ const login = (password, username) => {
       password
   })
     .then((response) => {
-      //console.log(response.data.tokens.accessToken); //tokens: { accessToken, refreshToken }
       if(response.data.tokens.accessToken){
         TokenService.setUser(response.data.tokens);
       }

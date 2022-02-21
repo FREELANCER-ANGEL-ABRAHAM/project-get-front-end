@@ -1,13 +1,8 @@
 import React from 'react';
-import {Card, Form, Button, Row, Alert, image} from 'react-bootstrap'
+import {Card, Form, Button, Row, Alert} from 'react-bootstrap'
 import { useState  } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
-
-const style = {
-
-}
-
 
 const Settings = ()  => {
   const [pictureValue, setPictureValue] = useState();
@@ -25,7 +20,7 @@ const Settings = ()  => {
     form_data.append('status', 'active');
 
     try {
-      const res = await AuthLinkProvider.saveLogo(form_data);
+      await AuthLinkProvider.saveLogo(form_data);
       setPictureValue();
       setLogo({});
       navigate("/panel");
@@ -51,8 +46,7 @@ const Settings = ()  => {
       value = e.target.files[0];
     }
     setLogo((logo) => {
-      const gestor = { ...logo, [name]: value };
-      return gestor;
+      return { ...logo, [name]: value };
     });
   };
 

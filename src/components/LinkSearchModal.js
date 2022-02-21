@@ -21,7 +21,7 @@ function LinkSearchModal(props) {
       setLinks(response.docs);
       setTotalPages(response.totalPages);
     }catch (err){
-      await console.log(err);
+      console.log(err);
     }
   }
 

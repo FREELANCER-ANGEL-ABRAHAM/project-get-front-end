@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
 import { useState } from "react";
  
@@ -42,8 +42,7 @@ function CreateLink() {
     form_data.append('status', 'disable');
     form_data.append('visibility', 'visible');
     try {
-      //console.log(form_data);
-      const response = await AuthLinkProvider.saveLink(form_data);
+      await AuthLinkProvider.saveLink(form_data);
       setPictureValue();
       setLink({});
       navigate("/panel");
@@ -66,8 +65,7 @@ function CreateLink() {
       value = e.target.files[0];
     }
     setLink((link) => {
-      const gestor = { ...link, [name]: value };
-      return gestor;
+      return { ...link, [name]: value };
     });
   };
 
