@@ -19,7 +19,7 @@ const Styles = styled.div`
   }
 `
 
-const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, logoHeight, href, logoutTextDisplay}) => {
+const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, logoHeight, href, logoutDisplay}) => {
   const [logo, setLogo] = useState({
     image: webLogo
   })
@@ -53,15 +53,15 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, l
         </Navbar.Brand>
         <h1 className='mx-auto text-light' style={{fontSize: "36px", fontWeight: "700"}}>{navbarTitle}</h1>
         <Navbar.Text>
-          <span className={settingsDisplay}>
+          <span className={settingsDisplay || "d-none"} style={{marginRight: "1rem"}}>
             <a href='/settings'>
               <i className='bi bi-gear-fill fa-lg text-light' style={{fontSize: "1.5em"}} ></i>
             </a>
-            <a href='/admin' onClick={() => TokenService.removeUser()} to="/admin" className={logoutTextDisplay || "d-none"}>
-              <p>
-                logout
-              </p>
-            </a>
+          </span>
+          <span className={logoutDisplay || "d-none"}>
+            <a href='/admin' onClick={() => TokenService.removeUser()} to="/admin">
+              <i className='bi bi-box-arrow-left fa-lg text-light' style={{fontSize: "1.5em"}} ></i>
+            </a> 
           </span>
         </Navbar.Text>
       </Navbar>

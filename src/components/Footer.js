@@ -4,7 +4,8 @@ import styled from 'styled-components';
 function Footer({actionText, actionHref}) {
 
   const Footer = styled.footer`
-    position: relative;
+    position: absolute;
+    width: 100%;
     height: 7.688rem;
     background: #F23131;
     color: white;

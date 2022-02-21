@@ -2,7 +2,7 @@ import { Row, Card, Form, Alert } from "react-bootstrap";
 import userLogo from "./assets/user.svg"
 import styled from "styled-components";
 import CustomButton from "./components/CustomButton";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import authClient from "./service/authClient";
 

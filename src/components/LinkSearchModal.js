@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Button, Form, Row, Pagination } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import AuthLinkProvider from '../service/authLink';
-import CardLink from './CardLink';
+import CardRow from './CardRow';
 
 function LinkSearchModal(props) {
   const [search, setSearch] = useState('');
@@ -21,7 +21,7 @@ function LinkSearchModal(props) {
       setLinks(response.docs);
       setTotalPages(response.totalPages);
     }catch (err){
-      console.log(err);
+      await console.log(err);
     }
   }
 
@@ -72,7 +72,7 @@ function LinkSearchModal(props) {
         <Row className="mt-2 gy-4">
         {
           links.length > 0 ? links.map((item) => (
-            <CardLink
+            <CardRow
               key={item['_id']}
               id={item['_id']}
               name={item['name']}
@@ -86,7 +86,7 @@ function LinkSearchModal(props) {
         }
         </Row>
 
-        <Pagination>
+        <Pagination className="d-flex justify-content-center mt-3">
           <Pagination.Prev disabled={ currentPage === 1 } onClick={backPage}/>
           {
             pages.map((item) => (
@@ -95,10 +95,11 @@ function LinkSearchModal(props) {
           }
           <Pagination.Next disabled={ totalPages === currentPage } onClick={nextPage}/>
         </Pagination>
+        
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={searchLinks}>Buscar</Button>
-        <Button onClick={props.onHide}>Cerrar</Button>
+        <Button variant='primary' onClick={searchLinks}>Buscar</Button>
+        <Button variant='danger' onClick={props.onHide}>Cerrar</Button>
       </Modal.Footer>
     </Modal>
   );

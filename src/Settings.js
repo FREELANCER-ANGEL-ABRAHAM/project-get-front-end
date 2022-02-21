@@ -1,6 +1,5 @@
 import React from 'react';
 import {Card, Form, Button, Row, Alert, image} from 'react-bootstrap'
-import styled from 'styled-components';
 import { useState  } from "react";
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';

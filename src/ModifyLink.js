@@ -155,7 +155,7 @@ const ModifyLink = () => {
                 </Row>
                 <div className='d-grid gap-1 mt-3'>
                   <Button className="p-4" variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} type="submit" onClick={handleSaveLink}>
-                    Crear
+                    Modificar
                   </Button>
                   <Button className="p-4" variant="danger" size="lg" onClick={() => navigate('/panel')} style={{ fontWeight: 700, fontSize: "1em" }}>
                     Cancelar

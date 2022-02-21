@@ -85,8 +85,7 @@ const Panel = () => {
 
       <LinkSearchModal show={modalShow} onHide={() => setModalShow(false)} />
 
-
-      <Pagination>
+      <Pagination className="d-flex justify-content-center mt-3">
         <Pagination.Prev disabled={ currentPage === 1 } onClick={backPage}/>
         {
           pages.map((item) => (
