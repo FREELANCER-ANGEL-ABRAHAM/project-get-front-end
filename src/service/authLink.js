@@ -48,7 +48,7 @@ const getLinkById = async (id) => {
 
 const updatelink = async (values) => {
     const token = TokenService.getUser();
-    return await axios.patch('http://localhost:80/api/update-link', values, {
+    return axios.patch('http://localhost:80/api/update-link', values, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -57,7 +57,7 @@ const updatelink = async (values) => {
 
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
-  return await axios.delete(`http://localhost:80/api/delete-link/${id}`, {
+  return axios.delete(`http://localhost:80/api/delete-link/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -66,7 +66,7 @@ const deleteLink = async (id) => {
 
 const saveLogo = async (values) => {
   const token = TokenService.getUser();
-  return await axios.post('http://localhost:80/api/create-logo', values,  {
+  return axios.post('http://localhost:80/api/create-logo', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
@@ -77,7 +77,7 @@ const saveLogo = async (values) => {
 
 const saveLink = async (values) => {
   const token = TokenService.getUser();
-  return await axios.post('http://localhost:80/api/create-link', values,  {
+  return axios.post('http://localhost:80/api/create-link', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
