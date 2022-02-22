@@ -15,7 +15,7 @@ const getAllLinks = async (name, limit = 9, page = 1 ) => {
       params: params
     });
 
-    return res.data.links;;
+    return res.data.links;
   } catch (err) {
     console.log(err);
   }

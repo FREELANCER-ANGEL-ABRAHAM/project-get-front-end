@@ -7,9 +7,8 @@ const getLocalAccessToken = () => {
 }
 
 const updateNewAccessToken = (token) => {
-  let user = JSON.parse(localStorage.getItem("Token"));
-  user = token;
-  localStorage.setItem("Token", JSON.stringify(user));
+  JSON.parse(localStorage.getItem("Token"));
+  localStorage.setItem("Token", JSON.stringify(token));
 }
 
 const getUser = () => {
