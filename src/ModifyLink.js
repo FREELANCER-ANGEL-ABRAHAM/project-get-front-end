@@ -35,8 +35,8 @@ const ModifyLink = () => {
         if(response){
           setLink(response);
         }
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
       }
     })();
   }, []);
@@ -59,8 +59,8 @@ const ModifyLink = () => {
       setLink({});
       navigate("/panel");
       window.location.reload();
-    } catch (error) { 
-      const response = error.response.data.error.message;
+    } catch (err) { 
+      const response = err.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {

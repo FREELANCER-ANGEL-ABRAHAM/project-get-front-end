@@ -22,8 +22,8 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
-    } catch (error) {
-      const response = error.response.data.error.message;
+    } catch (err) {
+      const response = err.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {
@@ -36,8 +36,8 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
     try {
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
-    } catch (error) {
-      const response = error.response.data.error.message;
+    } catch (err) {
+      const response = err.response.data.error.message;
       setErrorMessage(response);
 
       if(response) {

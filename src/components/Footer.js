@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 function Footer({actionText, actionHref}) {
 
-  const Footer = styled.footer`
+  const FooterStyle = styled.footer`
     position: absolute;
     width: 100%;
     height: 7.688rem;
@@ -32,7 +32,7 @@ function Footer({actionText, actionHref}) {
   `
 
   return (
-    <Footer>
+    <FooterStyle>
       <a href={actionHref}>
         <p className="action">
           {actionText}
@@ -41,7 +41,7 @@ function Footer({actionText, actionHref}) {
       <p className="copyright">
         <span style={{fontWeight: "700"}}>Copyright</span> © Red Crecer
       </p>
-    </Footer>
+    </FooterStyle>
   );
 }
 
