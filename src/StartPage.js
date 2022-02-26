@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
 import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
@@ -42,8 +42,8 @@ const StartPage = () => {
   }
 
   return (
-    <div className="col-12 col-md-6 col-lg-4 mx-auto">
-      <div className="p-2">
+    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100% - 6.563rem)", minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
+      <Container>
         <Card className="mx-auto shadow p-3 text-center" style={{border: "none",}}>
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
@@ -60,7 +60,7 @@ const StartPage = () => {
             disabled={enableButton}>
               Continuar
           </Button>
-      </div>
+      </Container>
       
     </div>
   );

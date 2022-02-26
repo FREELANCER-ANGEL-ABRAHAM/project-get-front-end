@@ -1,7 +1,8 @@
 import axios from 'axios';
+import authClient from './authClient';
 import TokenService from './authToken';
 
-const getAllLinks = async (name, limit = 9, page = 1 ) => {
+const getAllLinks = async (page = 1, name, limit = 9) => {
   try {
     const token = TokenService.getUser();
     const params = { page, limit };
@@ -14,20 +15,22 @@ const getAllLinks = async (name, limit = 9, page = 1 ) => {
       },
       params: params
     });
+    const links = res.data.links;
 
-    return res.data.links;
-  } catch (err) {
-    console.log(err);
+    return links;
+  } catch (error) {
+    console.log(error);
   }
 }
 
 const getCurrentLink = async () => {
   try {
     const res = await axios.get('http://localhost:80/api/link');
+    const links = res.data.links;
 
-    return res.data.links;
-  } catch (err) {
-    console.log(err);
+    return links;
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -39,51 +42,58 @@ const getLinkById = async (id) => {
         'Authorization': `Bearer ${token}`
       }
     });
-  
-    return res.data.links;
-  } catch (err) {
-    console.log(err);
+    const links = res.data.links;
+
+    return links;
+  } catch (error) {
+    console.log(error);
   }
 }
 
 const updatelink = async (values) => {
     const token = TokenService.getUser();
-    return axios.patch('http://localhost:80/api/update-link', values, {
+    const res = await axios.patch('http://localhost:80/api/update-link', values, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
+    
+   return res;
 }
 
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
-  return axios.delete(`http://localhost:80/api/delete-link/${id}`, {
+  const res = await axios.delete(`http://localhost:80/api/delete-link/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
   });
+  
+ return res;
 }
 
 const saveLogo = async (values) => {
   const token = TokenService.getUser();
-  return axios.post('http://localhost:80/api/create-logo', values,  {
+  const res = await axios.post('http://localhost:80/api/create-logo', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
     }
   });
 
+  return res;
 }
 
 const saveLink = async (values) => {
   const token = TokenService.getUser();
-  return axios.post('http://localhost:80/api/create-link', values,  {
+  const res = await axios.post('http://localhost:80/api/create-link', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
     }
   });
 
+  return res;
 }
 
 const AuthLinkProvider = {
