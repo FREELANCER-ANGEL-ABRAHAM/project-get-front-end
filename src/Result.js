@@ -1,10 +1,10 @@
 import { Card, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
-import success from "./assets/check.svg"
+import success from "./assets/check.svg";
 
 function Result() {
   return (
-    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100% - 6.563rem)", minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
+    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100vh )", display: "flex", alignItems: "center"}}>
       <Container>
         <Card className="shadow p-4 text-center" style={{border: "none"}}>
           <CustomIcon src={success} alt="icon" height={25}></CustomIcon>
