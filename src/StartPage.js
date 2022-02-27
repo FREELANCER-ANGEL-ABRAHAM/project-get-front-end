@@ -42,7 +42,7 @@ const StartPage = () => {
   }
 
   return (
-    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100% - 6.563rem)", minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
+    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
       <Container>
         <Card className="mx-auto shadow p-3 text-center" style={{border: "none",}}>
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
