@@ -14,9 +14,7 @@ const getAllLinks = async (page = 1, name, limit = 9) => {
       },
       params: params
     });
-    const links = res.data.links;
-
-    return links;
+    return res.data.links;
   } catch (error) {
     console.log(error);
   }
@@ -25,9 +23,7 @@ const getAllLinks = async (page = 1, name, limit = 9) => {
 const getCurrentLink = async () => {
   try {
     const res = await axios.get('http://localhost:80/api/link');
-    const links = res.data.links;
-
-    return links;
+    return res.data.links;
   } catch (error) {
     console.log(error);
   }
@@ -49,7 +45,7 @@ const getLinkById = async (id) => {
 
 const updatelink = async (values) => {
     const token = TokenService.getUser();
-    return await axios.patch('http://localhost:80/api/update-link', values, {
+    return axios.patch('http://localhost:80/api/update-link', values, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -58,7 +54,7 @@ const updatelink = async (values) => {
 
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
-  return await axios.delete(`http://localhost:80/api/delete-link/${id}`, {
+  return axios.delete(`http://localhost:80/api/delete-link/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
@@ -67,7 +63,7 @@ const deleteLink = async (id) => {
 
 const saveLogo = async (values) => {
   const token = TokenService.getUser();
-  return await axios.post('http://localhost:80/api/create-logo', values,  {
+  return axios.post('http://localhost:80/api/create-logo', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
@@ -77,7 +73,7 @@ const saveLogo = async (values) => {
 
 const saveLink = async (values) => {
   const token = TokenService.getUser();
-  return await axios.post('http://localhost:80/api/create-link', values,  {
+  return axios.post('http://localhost:80/api/create-link', values,  {
     headers: {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'multipart/form-data',
