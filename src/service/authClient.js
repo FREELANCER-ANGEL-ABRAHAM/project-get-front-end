@@ -2,7 +2,7 @@ import axios from 'axios'
 import TokenService from './authToken';
 
 const login = (password, username) => {
-  return axios.post('${config.API_URL}/api/login', {
+  return axios.post(`${config.API_URL}/api/login`, {
       username,
       password
   })
