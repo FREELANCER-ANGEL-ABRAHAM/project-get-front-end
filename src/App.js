@@ -14,6 +14,7 @@ import CreateLink from './CreateLink';
 import Footer from './components/Footer';
 import ModifyLink from './ModifyLink';
 import backArrow from './assets/backarrow.svg'
+import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 function App() {
 
@@ -53,7 +54,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<StartPage />} />
           <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/panel" element={<Panel />} />
+          <Route path="/panel" element={<Panel/>} />
           <Route path="/result" element={<Result />} />
           <Route path="/create" element={<CreateLink />} />
           <Route path="/modify/:id" element={<ModifyLink />} />

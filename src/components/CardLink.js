@@ -9,11 +9,13 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
   const [error, setError] = useState(false);
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => setShow(false); 
+  
   const handleShow = () => setShow(true);
 
   const handleUpdateStatus = async (e) => {
     try {
+      console.log(id);
       const values = {
         id,
         visibility,

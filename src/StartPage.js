@@ -12,17 +12,19 @@ const StartPage = () => {
 
   const navigate = useNavigate()
 
-  const [enableButton, setEnableButton] = useState(true)
+  const [enableButton, setEnableButton] = useState(true);
 
   const [links, setLinks] = useState({
+    id: 1,
     title: 'Complete los pasos para continuar.',
     description: 'Para acceder a este contenido realiza lo siguiente:',
     image: socialLogo,
     url: '/result',
-    btn_name: 'Dale Like' 
+    btn_name: 'Dale Like'
   });
 
   useEffect(() => {
+    console.log(links._id);
     ( async () => {
       try {
         const response = await AuthLinkProvider.getCurrentLink();
@@ -38,7 +40,7 @@ const StartPage = () => {
   const routeChange = () =>{ 
     let path = links.url; 
     setEnableButton(false);
-    window.location.href = path;
+    window.open(path, '_blank');
   }
 
   return (
@@ -57,7 +59,9 @@ const StartPage = () => {
             variant="danger" 
             onClick={() => navigate('/result')} 
             style={{ border: "none"}} 
-            disabled={enableButton}>
+            disabled={enableButton}
+            key={links.id}
+            id={links._id} >
               Continuar
           </Button>
       </div>

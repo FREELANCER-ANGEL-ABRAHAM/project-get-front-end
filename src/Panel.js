@@ -26,7 +26,7 @@ const Panel = () => {
   useEffect(() => {
     ( async () => {
       try {
-        const response = await AuthLinkProvider.getAllLinks(currentPage);
+        const response = await AuthLinkProvider.getAllLinksJustPage(currentPage);
         setLinks(response.docs);
         setTotalPages(response.totalPages);
       } catch (error) {

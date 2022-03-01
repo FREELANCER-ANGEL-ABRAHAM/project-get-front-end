@@ -17,7 +17,7 @@ function LinkSearchModal(props) {
   }
   const searchLinks = async() => {
     try{
-      const response = await AuthLinkProvider.getAllLinks(currentPage, search, 6);
+      const response = await AuthLinkProvider.getAllLinks(search, currentPage, 6);
       await setLinks(response.docs);
       setTotalPages(response.totalPages);
     }catch (err){

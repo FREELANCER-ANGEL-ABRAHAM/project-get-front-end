@@ -1,7 +1,7 @@
 import axios from 'axios';
 import TokenService from './authToken';
 
-const getAllLinks = async (name, limit = 9, page = 1 ) => {
+const getAllLinks = async (name, page = 1, limit = 9) => {
   try {
     const token = TokenService.getUser();
     const params = { page, limit };
@@ -21,11 +21,39 @@ const getAllLinks = async (name, limit = 9, page = 1 ) => {
   }
 }
 
+const getAllLinksJustPage = async (page = 1, limit = 9) => {
+  try {
+    const token = TokenService.getUser();
+    const params = { page, limit };
+
+    const res = await axios.get(`http://localhost:80/api/links`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: params
+    });
+
+    return res.data.links;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 const getCurrentLink = async () => {
   try {
     const res = await axios.get('http://localhost:80/api/link');
 
     return res.data.links;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+const getLogo = async () => {
+  try {
+    const res = await axios.get('http://localhost:80/api/logo');
+
+    return res.data.logo;
   } catch (err) {
     console.log(err);
   }
@@ -94,6 +122,8 @@ const AuthLinkProvider = {
   saveLink,
   getLinkById,
   saveLogo,
+  getLogo,
+  getAllLinksJustPage
 }
 
 export default AuthLinkProvider;
