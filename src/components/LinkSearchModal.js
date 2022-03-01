@@ -15,7 +15,7 @@ function LinkSearchModal(props) {
   for(let i=1; i <= totalPages; i++){
     pages.push(i);
   }
-  const searchLinks = async() => {
+  const searchLinks = useCallback(async() => {
     try{
       const response = await AuthLinkProvider.getAllLinks(search, currentPage, 6);
       await setLinks(response.docs);
@@ -23,7 +23,7 @@ function LinkSearchModal(props) {
     }catch (err){
       console.log(err);
     }
-  }
+  });
 
   useEffect(() => {
     ( async () => {
