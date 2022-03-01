@@ -1,7 +1,7 @@
 import './css/App.css';
 import './sass/main.scss';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 import StartPage from './StartPage';
 import AdminLogin from './AdminLogin';
 import Panel from './Panel';
@@ -14,7 +14,6 @@ import CreateLink from './CreateLink';
 import Footer from './components/Footer';
 import ModifyLink from './ModifyLink';
 import backArrow from './assets/backarrow.svg'
-import AuthenticatedRoute from './components/AuthenticatedRoute';
 
 function App() {
 

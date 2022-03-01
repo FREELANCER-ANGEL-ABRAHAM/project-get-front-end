@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
 import TokenService from './service/authToken';
 
- 
 function CreateLink() {
 
   const [showImageSelector, setShowImageSelector] = React.useState(false)
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
-  const [pictureValue, setPictureValue] = useState();
+  const [setPictureValue] = useState();
   const [link, setLink] = useState({
     name: '',
     title: '',
@@ -28,7 +27,7 @@ function CreateLink() {
         navigate('/admin');
       }
     })();
-  }, []); 
+  }, []);
 
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
@@ -57,7 +56,7 @@ function CreateLink() {
       setLink({});
       navigate("/panel");
       window.location.reload();
-    } catch (err) { 
+    } catch (err) {
       const response = err.response.data.error.message;
       setErrorMessage(response);
       if(response) {

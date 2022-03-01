@@ -8,7 +8,7 @@ const ModifyLink = () => {
   const { id } = useParams();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
-  const [pictureValue, setPictureValue] = useState();
+  const [setPictureValue] = useState();
   const [showImageSelector, setShowImageSelector] = React.useState(false)
   const [link, setLink] = useState({
     name: 'Nombre del link',

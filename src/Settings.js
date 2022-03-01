@@ -7,7 +7,7 @@ import TokenService from './service/authToken';
 const Settings = ()  => {
   const navigate = useNavigate();
 
-  const [pictureValue, setPictureValue] = useState();
+  const [setPictureValue] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
