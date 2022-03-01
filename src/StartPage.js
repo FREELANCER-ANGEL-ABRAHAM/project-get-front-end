@@ -7,6 +7,7 @@ import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthLinkProvider from "./service/authLink";
+import './sass/components/_button.scss';
 
 const StartPage = () => {
 
@@ -53,10 +54,10 @@ const StartPage = () => {
           </Card>
       
           <Button 
-            className="w-100 mx-auto btn-lg p-4 mt-2" 
+            className="w-100 mx-auto btn-lg p-4 mt-2 disabledButton" 
             variant="danger" 
             onClick={() => navigate('/result')} 
-            style={{ border: "none"}} 
+            style={{ border: "none" }} 
             disabled={enableButton}>
               Continuar
           </Button>
