@@ -38,7 +38,7 @@ const Panel = () => {
         console.error(error);
       }
     })();
-  }, [refreshCount, currentPage]);
+  }, [refreshCount, currentPage, navigate]);
 
   const refresh = () => {
     setRefreshCount(refreshCount + 1);

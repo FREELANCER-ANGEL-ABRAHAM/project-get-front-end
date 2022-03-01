@@ -83,10 +83,10 @@ const CardRow = ({ id, name, visibility, status, onStatusChange }) => {
                   onChange={handleUpdateStatus}
                   style={{marginRight: "5px"}}
                 />
-                <Button variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={() => navigate(`/modify/${id}`)} style={{marginRight: "5px"}}>
+                <Button variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={() => navigate(`/modify/${id}`)}>
                   <i class="bi bi-pencil"></i>
                 </Button>
-                <Button variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={handleShow} style={{marginRight: "5px"}}>
+                <Button variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={handleShow}>
                   <i class="bi bi-trash"></i>
                 </Button>
               </div>

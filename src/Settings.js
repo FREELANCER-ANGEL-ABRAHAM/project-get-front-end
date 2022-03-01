@@ -21,7 +21,7 @@ const Settings = ()  => {
           navigate('/admin');
         }
       })();
-  }, []); 
+  }, [navigate]); 
 
   const handleSaveLogo = async(e) => {
     e.preventDefault();
@@ -93,7 +93,7 @@ const Settings = ()  => {
         
         <Row className='w-100'>
           <div className='col-12 col-sm-6 col-md-4 mx-auto'>
-            <img src={imagePreview} className='d-flex mt-2' style={{background: '#C4C4C4', borderRadius: '5px!important', height: '310px', width: '410px'}}/>
+            <img src={imagePreview} alt="Preview" className='d-flex mt-2' style={{background: '#C4C4C4', borderRadius: '5px!important', height: '310px', width: '410px'}}/>
           </div>
         </Row>
       </div>

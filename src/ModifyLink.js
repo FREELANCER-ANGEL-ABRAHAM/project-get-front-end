@@ -43,7 +43,7 @@ const ModifyLink = () => {
         console.error(err);
       }
     })();
-  }, []);
+  }, [id, navigate]);
 
   const handleSaveLink = async(e) => {
     e.preventDefault();

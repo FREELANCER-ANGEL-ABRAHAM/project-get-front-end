@@ -65,7 +65,7 @@ const AdminLogin = () => {
       <div>
         <div className="col-12 col-md-6 col-lg-4 mx-auto" style={{minHeight: "calc(100% - 6.563rem)", display: "flex", alignItems: "center"}}>
           <Card className="shadow pt-4 text-center" style={{ left: "50%", top: "50%", position: "absolute", transform: "translate(-50%, -50%)" }}>
-            <Card.Body style={{ fontSize: "1em" }} style={{ position: "relative" }}>
+            <Card.Body style={{ fontSize: "1em", position: "relative" }}>
               <StyledImage src={userLogo} />
               <Form method="post" onSubmit={handleSubmit} className="mt-4">
                 <Form.Group className="mb-3" controlId="user">

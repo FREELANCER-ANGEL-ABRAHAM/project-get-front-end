@@ -27,7 +27,7 @@ function CreateLink() {
         navigate('/admin');
       }
     })();
-  }, []);
+  }, [navigate]);
 
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
