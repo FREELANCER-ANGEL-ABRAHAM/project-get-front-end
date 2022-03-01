@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
+import TokenService from './service/authToken';
 
  
 function CreateLink() {
@@ -20,6 +21,15 @@ function CreateLink() {
     detail_result: '',
     contain_result: '',
   });
+
+  useEffect(() => {
+    ( async () => {
+      if(!TokenService.getUser()){
+        navigate('/admin');
+      }
+    })();
+  }, []); 
+
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
       setShowImageSelector(true)

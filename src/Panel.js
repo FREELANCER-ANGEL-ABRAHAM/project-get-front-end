@@ -6,6 +6,7 @@ import 'react-tiny-fab/dist/styles.css';
 import { useNavigate } from "react-router-dom";
 import LinkSearchModal from "./components/LinkSearchModal";
 import AuthLinkProvider from "./service/authLink";
+import TokenService from "./service/authToken";
 
 const Panel = () => {
 
@@ -23,9 +24,13 @@ const Panel = () => {
   for(let i=1; i <= totalPages; i++){
     pages.push(i);
   }
+
   useEffect(() => {
     ( async () => {
       try {
+        if(!TokenService.getUser()){
+          navigate('/admin');
+        }
         const response = await AuthLinkProvider.getAllLinksJustPage(currentPage);
         setLinks(response.docs);
         setTotalPages(response.totalPages);

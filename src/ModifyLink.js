@@ -2,6 +2,7 @@ import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import AuthLinkProvider from './service/authLink';
+import TokenService from './service/authToken';
 
 const ModifyLink = () => {
   const { id } = useParams();
@@ -31,6 +32,9 @@ const ModifyLink = () => {
   useEffect(() => {
     ( async () => {
       try {
+        if(!TokenService.getUser()){
+          navigate('/admin');
+        }
         const response = await AuthLinkProvider.getLinkById(id);
         if(response){
           setLink(response);

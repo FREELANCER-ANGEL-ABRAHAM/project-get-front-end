@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Card, Form, Button, Row, Alert} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
+import TokenService from './service/authToken';
 
 const Settings = ()  => {
+  const navigate = useNavigate();
+
   const [pictureValue, setPictureValue] = useState();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
@@ -12,6 +15,14 @@ const Settings = ()  => {
     image: [],
   });
   
+  useEffect(() => {
+      ( async () => {
+        if(!TokenService.getUser()){
+          navigate('/admin');
+        }
+      })();
+  }, []); 
+
   const handleSaveLogo = async(e) => {
     e.preventDefault();
     const form_data = new FormData();
@@ -33,8 +44,6 @@ const Settings = ()  => {
       }
     }
   }
-  
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));

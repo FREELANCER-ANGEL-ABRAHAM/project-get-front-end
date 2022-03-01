@@ -25,7 +25,6 @@ const StartPage = () => {
   });
 
   useEffect(() => {
-    console.log(links._id);
     ( async () => {
       try {
         const response = await AuthLinkProvider.getCurrentLink();
@@ -60,9 +59,7 @@ const StartPage = () => {
             variant="danger" 
             onClick={() => navigate('/result')} 
             style={{ border: "none"}} 
-            disabled={enableButton}
-            key={links.id}
-            id={links._id} >
+            disabled={enableButton}>
               Continuar
           </Button>
       </Container>
