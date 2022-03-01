@@ -28,6 +28,8 @@ const ModifyLink = () => {
       setShowImageSelector(false)
     }
   }
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     ( async () => {
@@ -85,7 +87,6 @@ const ModifyLink = () => {
     });
   };
  
-  const navigate = useNavigate()
 
   return (
     <>

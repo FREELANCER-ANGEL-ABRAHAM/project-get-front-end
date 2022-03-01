@@ -20,6 +20,8 @@ function CreateLink() {
     detail_result: '',
     contain_result: '',
   });
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     ( async () => {
@@ -78,7 +80,6 @@ function CreateLink() {
     });
   };
 
-  const navigate = useNavigate()
 
   return (
     <>

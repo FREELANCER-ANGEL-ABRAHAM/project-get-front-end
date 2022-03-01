@@ -33,7 +33,7 @@ function LinkSearchModal(props) {
         console.error(error);
       }
     })();
-  }, [refreshCount, currentPage]);
+  }, [refreshCount, currentPage, searchLinks]);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
