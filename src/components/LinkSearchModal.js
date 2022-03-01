@@ -23,7 +23,7 @@ function LinkSearchModal(props) {
     }catch (err){
       console.log(err);
     }
-  },[]);
+  },[currentPage, search]);
 
   useEffect(() => {
     ( async () => {
