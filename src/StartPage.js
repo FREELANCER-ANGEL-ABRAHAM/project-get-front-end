@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
 import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
@@ -7,6 +7,7 @@ import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthLinkProvider from "./service/authLink";
+import './sass/components/_button.scss';
 
 const StartPage = () => {
 
@@ -44,8 +45,8 @@ const StartPage = () => {
   }
 
   return (
-    <div className="col-12 col-md-6 col-lg-4 mx-auto">
-      <div className="p-2">
+    <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
+      <Container>
         <Card className="mx-auto shadow p-3 text-center" style={{border: "none",}}>
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
@@ -55,7 +56,7 @@ const StartPage = () => {
           </Card>
       
           <Button 
-            className="w-100 mx-auto btn-lg p-4 mt-2" 
+            className="w-100 mx-auto btn-lg p-4 mt-2 disabledButton" 
             variant="danger" 
             onClick={() => navigate('/result')} 
             style={{ border: "none"}} 
@@ -64,7 +65,7 @@ const StartPage = () => {
             id={links._id} >
               Continuar
           </Button>
-      </div>
+      </Container>
       
     </div>
   );

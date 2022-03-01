@@ -28,7 +28,7 @@ function LinkSearchModal(props) {
   useEffect(() => {
     ( async () => {
       try {
-        searchLinks();
+        await searchLinks();
       } catch (error) {
         console.error(error);
       }

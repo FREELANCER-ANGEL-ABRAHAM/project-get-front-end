@@ -14,10 +14,9 @@ const getAllLinks = async (name, page = 1, limit = 9) => {
       },
       params: params
     });
-
     return res.data.links;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -42,10 +41,9 @@ const getAllLinksJustPage = async (page = 1, limit = 9) => {
 const getCurrentLink = async () => {
   try {
     const res = await axios.get('http://localhost:80/api/link');
-
     return res.data.links;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -67,10 +65,9 @@ const getLinkById = async (id) => {
         'Authorization': `Bearer ${token}`
       }
     });
-  
     return res.data.links;
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -100,7 +97,6 @@ const saveLogo = async (values) => {
       'Content-Type': 'multipart/form-data',
     }
   });
-
 }
 
 const saveLink = async (values) => {
@@ -111,7 +107,6 @@ const saveLink = async (values) => {
       'Content-Type': 'multipart/form-data',
     }
   });
-
 }
 
 const AuthLinkProvider = {

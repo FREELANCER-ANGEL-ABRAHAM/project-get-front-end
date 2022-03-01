@@ -1,4 +1,4 @@
-import { Card, Row } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
 import success from "./assets/check.svg"
 import React, {useEffect} from 'react';

@@ -1,4 +1,4 @@
-import { Row, Card, Form, Alert } from "react-bootstrap";
+import { Card, Form, Alert } from "react-bootstrap";
 import userLogo from "./assets/user.svg"
 import styled from "styled-components";
 import CustomButton from "./components/CustomButton";
@@ -63,8 +63,8 @@ const AdminLogin = () => {
       }
 
       <div>
-        <Row className="m-2 m-md-0">
-          <Card className="col-12 col-md-6 col-lg-4 mx-auto shadow pt-4 text-center" style={{ left: "50%", top: "50%", position: "absolute", transform: "translate(-50%, -50%)" }}>
+        <div className="col-12 col-md-6 col-lg-4 mx-auto" style={{minHeight: "calc(100% - 6.563rem)", display: "flex", alignItems: "center"}}>
+          <Card className="shadow pt-4 text-center" style={{ left: "50%", top: "50%", position: "absolute", transform: "translate(-50%, -50%)" }}>
             <Card.Body style={{ fontSize: "1em" }} style={{ position: "relative" }}>
               <StyledImage src={userLogo} />
               <Form method="post" onSubmit={handleSubmit} className="mt-4">
@@ -78,7 +78,7 @@ const AdminLogin = () => {
               </Form>
             </Card.Body>
           </Card>
-        </Row>
+        </div>
       </div>
     </>
   );
