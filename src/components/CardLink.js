@@ -15,7 +15,6 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
 
   const handleUpdateStatus = async (e) => {
     try {
-      console.log(id);
       const values = {
         id,
         visibility,
@@ -32,7 +31,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
         setError(true);
       }
     }
-  }
+  } 
 
   const handleDeleteLink = async () => {
     try {
