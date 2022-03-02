@@ -35,7 +35,7 @@ const AdminLogin = () => {
     const user = e.target.user.value;
     const password = e.target.password.value;
     try {
-      authClient.login(password, user).then(() => {
+       authClient.login(password, user).then(() => {
         navigate("/panel");
         window.location.reload();
       }, (err) => {

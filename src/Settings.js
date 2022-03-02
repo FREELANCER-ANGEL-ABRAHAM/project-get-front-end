@@ -7,7 +7,7 @@ import TokenService from './service/authToken';
 const Settings = ()  => {
   const navigate = useNavigate();
 
-  const [setPictureValue] = useState();
+  const [ , setPictureValue] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
@@ -80,7 +80,7 @@ const Settings = ()  => {
                     <Form.Label>
                       Elige una imagen.
                     </Form.Label>
-                    <Form.Control type="file" name='image' onChange={handleChange} accept='image/x-png,image/gif,image/jpeg'/>
+                    <Form.Control type="file" name='image' required onChange={handleChange} accept='image/x-png,image/gif,image/jpeg'/>
                   </Form.Group>
                   <Button variant="primary" className='p-3 w-100' onClick={handleSaveLogo} type="submit">
                     Aplicar
