@@ -82,7 +82,7 @@ const updatelink = async (values) => {
 
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
-  return axios.delete(`${process.env.REACT_APP_API_URLL}/api/delete-link/${id}`, {
+  return axios.delete(`${process.env.REACT_APP_API_URL}/api/delete-link/${id}`, {
     headers: {
       'Authorization': `Bearer ${token}`
     }
