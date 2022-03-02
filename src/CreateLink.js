@@ -9,7 +9,7 @@ function CreateLink() {
   const [showImageSelector, setShowImageSelector] = React.useState(false)
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
-  const [setPictureValue] = useState();
+  const [, setPictureValue] = useState();
   const [link, setLink] = useState({
     name: '',
     title: '',
