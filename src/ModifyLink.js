@@ -106,15 +106,15 @@ const ModifyLink = () => {
                 <Row>
                   <Form.Group className='col-12 col-md-6' >
                     <Form.Label>Nombre del link. *</Form.Label>
-                    <Form.Control name="name" placeholder='Nombre del link' id='link-nombre' onChange={handleChange} value={link?.name ?? ''}/>
+                    <Form.Control name="name" placeholder='Nombre del link' required={true} id='link-nombre' onChange={handleChange} value={link?.name ?? ''}/>
                   </Form.Group>
                   <Form.Group className='col-12 col-md-6 mt-2 mt-sm-0'>
-                    <Form.Label>Titulo. *</Form.Label>
+                    <Form.Label>Titulo.</Form.Label>
                     <Form.Control name="title" placeholder='Titulo' id='link_titulo' onChange={handleChange} value={link?.title ?? ''}/>
                   </Form.Group>
                 </Row>
                 <Form.Group className='mt-2'>
-                  <Form.Label>Descripcion. *</Form.Label>
+                  <Form.Label>Descripcion.</Form.Label>
                   <div>
                     <textarea className='w-100' rows={5} id='link_descripcion' name='description' onChange={handleChange} value={link?.description ?? ''}></textarea>
                   </div>
@@ -130,8 +130,8 @@ const ModifyLink = () => {
                   </Form.Group>
                 </Row>
                 <Form.Group className='mt-2'>
-                  <Form.Label>Imagen. *</Form.Label>
-                  <Form.Select id='imagen_select' name='imagen_select' required={true} onChange={handleShowImageSelector} >
+                  <Form.Label>Imagen.</Form.Label>
+                  <Form.Select id='imagen_select' name='imagen_select' onChange={handleShowImageSelector} >
                     <option disabled="true">Selecciona una imagen</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
@@ -142,18 +142,18 @@ const ModifyLink = () => {
                 </Form.Group>
                 {showImageSelector ?
                   <Form.Group controlId="formFile" className="mt-2">
-                    <Form.Label>Seleccione una imagen.</Form.Label>
-                    <Form.Control type="file" id='imagen_otro_select' name='image' accept='image/x-png,image/gif,image/jpeg' onChange={handleChange}/>
+                    <Form.Label>Seleccione una imagen. *</Form.Label>
+                    <Form.Control type="file" id='imagen_otro_select' name='image' accept='image/x-png,image/gif,image/jpeg' onChange={handleChange} required={true} />
                   </Form.Group> : null}
                 <p className='mt-4 text-center fw-bold'>Editar informacion del resultado.</p>
                 <Row>
                   <Form.Group className='col-12 col-sm-6 mt-2 mt-0'>
-                    <Form.Label>Detalle del resultado. *</Form.Label>
-                    <Form.Control id='resultado_detalle' name='detail_result' placeholder='Detalle del resultado' required={true} onChange={handleChange} value={link?.detail_result ?? ''}/>
+                    <Form.Label>Detalle del resultado.</Form.Label>
+                    <Form.Control id='resultado_detalle' name='detail_result' placeholder='Detalle del resultado' onChange={handleChange} value={link?.detail_result ?? ''}/>
                   </Form.Group>
                   <Form.Group className='col-12 col-sm-6 mt-2 mt-0'>
-                    <Form.Label>Contenido del resultado. *</Form.Label>
-                    <Form.Control id='resultado_contenido' name='contain_result' placeholder='Contenido del resultado' required={true} onChange={handleChange} value={link?.contain_result ?? ''}/>
+                    <Form.Label>Contenido del resultado.</Form.Label>
+                    <Form.Control id='resultado_contenido' name='contain_result' placeholder='Contenido del resultado' onChange={handleChange} value={link?.contain_result ?? ''}/>
                   </Form.Group>
                 </Row>
                 <div className='d-grid gap-1 mt-3'>

@@ -15,12 +15,21 @@ const login = (password, username) => {
 
 }
 
+const changePassword = (password, username) => {
+  const token = TokenService.getUser();
+  return axios.post(`${process.env.REACT_APP_API_URL}/api/change-password`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }})
+}
+
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("userCredentials"));
 };
 
 const authClient = {
   login,
+  changePassword,
   getCurrentUser
 }
 
