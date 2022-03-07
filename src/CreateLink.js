@@ -3,6 +3,7 @@ import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
 import TokenService from './service/authToken';
+import youtubeIcon from './assets/socialmedia-logos/instagram.svg'
 
 function CreateLink() {
 
@@ -36,6 +37,7 @@ function CreateLink() {
       setShowImageSelector(true)
     } else {
       setShowImageSelector(false)
+      setPictureValue(youtubeIcon);
     }
   }
 
@@ -81,8 +83,10 @@ function CreateLink() {
   };
 
   const handleChangeSelect = (e) => {
+    let { name, value, type } = e.target;
     if (e.target.value === "youtube") {
-      setPictureValue('src/assets/backarrow.svg');
+      setPictureValue(youtubeIcon);
+      console.log("Youtube")
     } else if (e.target.value === "instagram") {
       setPictureValue('src/assets/backarrow.svg');
     } else if (e.target.value === "facebook") {
@@ -90,6 +94,9 @@ function CreateLink() {
     } else if (e.target.value === "twitter") {
       setPictureValue('src/assets/backarrow.svg');
     }
+    setLink((Link) => {
+      return { ...Link, [name]: value };
+    });
   }
 
   return (
@@ -135,7 +142,7 @@ function CreateLink() {
                 </Row>
                 <Form.Group className='mt-2'>
                   <Form.Label>Imagen.</Form.Label>
-                  <Form.Select name='imagen_select' onChange={handleChangeSelect} >
+                  <Form.Select name='imagen_select' onChange={handleShowImageSelector} >
                     <option disabled="true">Selecciona una imagen</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
