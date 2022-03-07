@@ -50,7 +50,7 @@ const StartPage = () => {
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
             <Card.Body style={{fontSize: "1em"}}>{links.description}</Card.Body>
-            { links.image ? <SocialIcon src={links.image} className="text-center mt-3 mb-5" height={80} width={82.05} alt="Social Media Icon" /> : null }
+            { links.image ? <SocialIcon src={links.image} className="text-center mt-3 mb-5" height={80} width={82.05} /> : null }
             <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
           </Card>
       
