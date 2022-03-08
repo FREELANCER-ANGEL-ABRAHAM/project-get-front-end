@@ -15,12 +15,12 @@ const login = (password, username) => {
 
 }
  
-const changePassword = async (password, username) => {
-  const token = TokenService.getUser();
-  return axios.post(`${process.env.REACT_APP_API_URL}/api/change-password`, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }})
+const changePassword = async (username, password, newPassword) => {
+  return axios.patch(`${process.env.REACT_APP_API_URL}/api/change-password`, {
+    username,
+    password,
+    newPassword
+  });
 }
 
 const getCurrentUser = () => {

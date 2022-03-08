@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const updateNewAccessToken = (token) => {
   JSON.parse(localStorage.getItem("Token"));
   localStorage.setItem("Token", JSON.stringify(token));
@@ -5,6 +7,26 @@ const updateNewAccessToken = (token) => {
 
 const getUser = () => {
   return JSON.parse(localStorage.getItem("Token"));
+}
+
+const getNewTokenCredentials = async () => {
+  const refreshToken = getLocalRefreshToken();
+  const body = {};
+  const res =  await axios.post(`${process.env.REACT_APP_API_URL}/api/refresh-token`, body, {
+    headers: {
+      authorization : `Bearer ${refreshToken}`
+    }
+  });
+
+  return res.data.response;
+}
+
+const getLocalAccessToken = () => {
+  return JSON.parse(localStorage.getItem("Token"));
+}
+
+const getLocalRefreshToken = () => {
+  return JSON.parse(localStorage.getItem("refreshToken"));
 }
 
 const getClickStatus = () => {
@@ -41,7 +63,10 @@ const TokenService = {
   clickStatus,
   setClickStatus,
   getClickStatus,
-  removeClickStatus
+  removeClickStatus,
+  getLocalRefreshToken,
+  getLocalAccessToken,
+  getNewTokenCredentials
 }
 
 export default TokenService;

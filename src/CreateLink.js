@@ -59,9 +59,17 @@ function CreateLink() {
     form_data.append('count_click', 0);
     try {
       console.log(link);
-      await AuthLinkProvider.saveLink(form_data);
-      setLink({});
-      navigate("/panel");
+      const response = await AuthLinkProvider.saveLink(form_data);
+      if(response === undefined){
+        const re = await TokenService.getNewTokenCredentials();
+        TokenService.setUser(re);
+        window.location.reload();
+      }
+      else{
+        setLink({});
+        navigate("/panel");
+      }
+      
     } catch (err) {
       const response = err.response.data.error.message;
       setErrorMessage(response);

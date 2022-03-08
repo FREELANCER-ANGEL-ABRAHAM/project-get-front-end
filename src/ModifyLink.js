@@ -46,6 +46,11 @@ const ModifyLink = () => {
         if(response){
           setLink(response);
         }
+        else if(response === undefined){
+          const re = await TokenService.getNewTokenCredentials();
+          TokenService.setUser(re);
+          window.location.reload();
+        }
       } catch (err) {
         console.error(err);
       }
@@ -65,11 +70,18 @@ const ModifyLink = () => {
     form_data.append('detail_result', link.detail_result);
     form_data.append('contain_result', link.contain_result);
     try {
-      await AuthLinkProvider.updatelink(form_data);
-      setPictureValue();
-      setLink({});
-      navigate("/panel");
-      window.location.reload();
+      const resp = await AuthLinkProvider.updatelink(form_data);
+      if(resp === undefined){
+        const re = await TokenService.getNewTokenCredentials();
+        TokenService.setUser(re);
+        window.location.reload();
+      }
+      else{
+        setPictureValue();
+        setLink({});
+        navigate("/panel");
+        window.location.reload();
+      }
     } catch (err) { 
       const response = err.response.data.error.message;
       setErrorMessage(response);

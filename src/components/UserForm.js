@@ -22,8 +22,7 @@ const StyledImage = styled.img`
 
 const UserForm = ({ error, errorMessage, handleSubmit, submitButton, formArr, redirect }) => {
 
-  const hasRedirect = !!redirect
-
+  const hasRedirect = !!redirect;
   return (
     <>
       {error ?

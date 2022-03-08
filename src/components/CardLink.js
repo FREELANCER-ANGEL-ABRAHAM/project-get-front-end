@@ -22,7 +22,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
         status: e.target.checked ? 'active' : 'disable',
       }
       TokenService.removeClickStatus();
-      await AuthLinkProvider.updatelink(values);
+      const resp = await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
     } catch (err) {

@@ -1,7 +1,6 @@
 import UserForm from './components/UserForm'
 import { useNavigate } from 'react-router-dom'
 import authClient from './service/authClient'
-import TokenService from './service/authToken'
 import { useState } from "react";
 
 const ChangePassword = () => {
@@ -13,10 +12,11 @@ const ChangePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = e.target.user.value;
-    const password = e.target.password.value;
+    const username = e.target.username.value;
+    const password = e.target.currentPassword.value;
+    const newPassword = e.target.newPassword.value;
     try {
-      const response = await authClient.changePassword(password, user);
+      await authClient.changePassword(username, password, newPassword);
       navigate("/admin");
     } catch (err) {
       const response = err.response.data.error.message;
@@ -31,7 +31,7 @@ const ChangePassword = () => {
   const formArr = [
     {
       placeholder: "Nombre de usuario",
-      name: "user",
+      name: "username",
       id: "user",
       type: "text",
       required: "true",
