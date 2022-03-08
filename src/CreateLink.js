@@ -3,14 +3,16 @@ import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from './service/authLink';
 import TokenService from './service/authToken';
-import youtubeIcon from './assets/socialmedia-logos/instagram.svg'
+import Sinstagram from './assets/socialmedia-logos/instagram.svg'
+import SyoutubeIcon from './assets/socialmedia-logos/youtube-svgrepo-com.svg'
+import Stwitter from './assets/socialmedia-logos/twitter-svgrepo-com.svg'
+import Sfacebook from './assets/socialmedia-logos/facebook-svgrepo-com.svg'
 
 function CreateLink() {
 
   const [showImageSelector, setShowImageSelector] = React.useState(false)
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
-  const [, setPictureValue] = useState();
   const [link, setLink] = useState({
     name: '',
     title: '',
@@ -20,6 +22,7 @@ function CreateLink() {
     image: [],
     detail_result: '',
     contain_result: '',
+    count_click: 0
   });
   const navigate = useNavigate()
 
@@ -37,7 +40,7 @@ function CreateLink() {
       setShowImageSelector(true)
     } else {
       setShowImageSelector(false)
-      setPictureValue(youtubeIcon);
+      handleChangeSelect(event);
     }
   }
 
@@ -54,12 +57,12 @@ function CreateLink() {
     form_data.append('contain_result', link.contain_result);
     form_data.append('status', 'disable');
     form_data.append('visibility', 'visible');
+    form_data.append('count_click', 0);
     try {
+      console.log(link);
       await AuthLinkProvider.saveLink(form_data);
-      setPictureValue();
       setLink({});
       navigate("/panel");
-      window.location.reload();
     } catch (err) {
       const response = err.response.data.error.message;
       setErrorMessage(response);
@@ -74,7 +77,6 @@ function CreateLink() {
   const handleChange = (e) => {
     let { name, value, type } = e.target;
     if (type === 'file') {
-      setPictureValue(e.target.files[0].name);
       value = e.target.files[0];
     }
     setLink((Link) => {
@@ -83,16 +85,19 @@ function CreateLink() {
   };
 
   const handleChangeSelect = (e) => {
-    let { name, value, type } = e.target;
-    if (e.target.value === "youtube") {
-      setPictureValue(youtubeIcon);
-      console.log("Youtube")
-    } else if (e.target.value === "instagram") {
-      setPictureValue('src/assets/backarrow.svg');
-    } else if (e.target.value === "facebook") {
-      setPictureValue('src/assets/backarrow.svg');
-    } else if (e.target.value === "twitter") {
-      setPictureValue('src/assets/backarrow.svg');
+    let { name, value } = e.target;
+    name = 'image';
+    if (value === "youtube") {
+      value = SyoutubeIcon;
+    }
+    if (value === "instagram") {
+      value = Sinstagram;
+    }
+    if (value === "facebook") {
+      value = Sfacebook;
+    }
+    if (value === "twitter") {
+      value = Stwitter;
     }
     setLink((Link) => {
       return { ...Link, [name]: value };
@@ -144,6 +149,7 @@ function CreateLink() {
                   <Form.Label>Imagen.</Form.Label>
                   <Form.Select name='imagen_select' onChange={handleShowImageSelector} >
                     <option disabled="true">Selecciona una imagen</option>
+                    <option value="Ninguno">Ninguno</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>
@@ -152,7 +158,7 @@ function CreateLink() {
                   </Form.Select>
                 </Form.Group>
                 {showImageSelector ?
-                  <Form.Group controlId="formFile" className="mt-2">
+                  <Form.Group className="mt-2">
                     <Form.Label>Seleccione una imagen. *</Form.Label>
                     <Form.Control type="file" name='image' accept='image/x-png,image/gif,image/jpeg' onChange={handleChange} required={true} />
                   </Form.Group> : null}

@@ -1,7 +1,8 @@
 import UserForm from './components/UserForm'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 import authClient from './service/authClient'
+import TokenService from './service/authToken'
+import { useState } from "react";
 
 const ChangePassword = () => {
 
@@ -10,28 +11,20 @@ const ChangePassword = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const user = e.target.user.value;
     const password = e.target.password.value;
     try {
-      authClient.changePassword(password, user).then(() => {
-        navigate("/admin");
-        window.location.reload();
-      }, (err) => {
-        const response = err;
-
-        console.log(response)
-
-        setErrorMessage(response);
-
-        if (response) {
-          setError(true);
-        }
-      }
-      );
+      const response = await authClient.changePassword(password, user);
+      navigate("/admin");
     } catch (err) {
-      console.log(err);
+      const response = err.response.data.error.message;
+      setErrorMessage(response);
+      if(response) {
+        setError(true);
+      }
+      window.scrollTo(0, 0);
     }
   }
 

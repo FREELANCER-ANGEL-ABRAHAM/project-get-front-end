@@ -66,6 +66,7 @@ const Panel = () => {
               name={item['name']}
               visibility={item['visibility']}
               status={item['status']}
+              count_click={item['count_click']}
               onStatusChange={refresh}
             />
           ))
