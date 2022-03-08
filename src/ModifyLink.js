@@ -3,6 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import AuthLinkProvider from './service/authLink';
 import TokenService from './service/authToken';
+import Sinstagram from './assets/socialmedia-logos/instagram.svg'
+import SyoutubeIcon from './assets/socialmedia-logos/youtube-svgrepo-com.svg'
+import Stwitter from './assets/socialmedia-logos/twitter-svgrepo-com.svg'
+import Sfacebook from './assets/socialmedia-logos/facebook-svgrepo-com.svg'
 
 const ModifyLink = () => {
   const { id } = useParams();
@@ -26,6 +30,7 @@ const ModifyLink = () => {
       setShowImageSelector(true)
     } else {
       setShowImageSelector(false)
+      handleChangeSelect(event);
     }
   }
   const navigate = useNavigate()
@@ -86,7 +91,27 @@ const ModifyLink = () => {
       return { ...Link, [name]: value };
     });
   };
- 
+  
+
+  const handleChangeSelect = (e) => {
+    let { name, value } = e.target;
+    name = 'image';
+    if (value === "youtube") {
+      value = SyoutubeIcon;
+    }
+    if (value === "instagram") {
+      value = Sinstagram;
+    }
+    if (value === "facebook") {
+      value = Sfacebook;
+    }
+    if (value === "twitter") {
+      value = Stwitter;
+    }
+    setLink((Link) => {
+      return { ...Link, [name]: value };
+    });
+  }
 
   return (
     <>

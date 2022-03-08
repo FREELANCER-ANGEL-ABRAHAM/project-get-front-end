@@ -1,11 +1,3 @@
-const getLocalRefreshToken = () => {
-  return JSON.parse(localStorage.getItem("refreshToken"));
-}
-
-const getLocalAccessToken = () => {
-  return JSON.parse(localStorage.getItem("Token"));
-}
-
 const updateNewAccessToken = (token) => {
   JSON.parse(localStorage.getItem("Token"));
   localStorage.setItem("Token", JSON.stringify(token));
@@ -13,6 +5,10 @@ const updateNewAccessToken = (token) => {
 
 const getUser = () => {
   return JSON.parse(localStorage.getItem("Token"));
+}
+
+const getClickStatus = () => {
+  return localStorage.getItem("Clicked");
 }
 
 const setUser = (user) => {
@@ -25,13 +21,27 @@ const removeUser = () => {
   localStorage.removeItem("refreshToken");
 }
 
+const removeClickStatus = () => {
+  localStorage.removeItem("Clicked");
+}
+
+const clickStatus = () => {
+  localStorage.setItem("Clicked", JSON.stringify(false));
+}
+
+const setClickStatus = () => {
+  localStorage.setItem("Clicked", JSON.stringify(true));
+}
+
 const TokenService = {
-  getLocalRefreshToken,
-  getLocalAccessToken,
   updateNewAccessToken,
   getUser,
   setUser,
   removeUser,
+  clickStatus,
+  setClickStatus,
+  getClickStatus,
+  removeClickStatus
 }
 
 export default TokenService;

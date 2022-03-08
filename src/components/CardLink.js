@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from '../service/authLink';
+import TokenService from '../service/authToken';
 
-const CardLink = ({ id, name, visibility, status, onStatusChange, count_click}) => {
+const CardLink = ({ id, name, visibility, status, onStatusChange, count_click }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
@@ -20,6 +21,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click}) 
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
+      TokenService.removeClickStatus();
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -35,6 +37,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click}) 
 
   const handleDeleteLink = async () => {
     try {
+      TokenService.removeClickStatus();
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (err) {
@@ -86,9 +89,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click}) 
                 checked={ status === 'active'}
                 onChange={handleUpdateStatus}
               />
-              <p>
-                Cantidad de clicks: <span className='font-weight-bold'>{count_click}</span> 
-              </p>
+              <label>Cantidad de Click: {count_click}</label>
               {error && (
                 <div className="mt-2">
                   <Alert variant={'danger'} className="mt-2">

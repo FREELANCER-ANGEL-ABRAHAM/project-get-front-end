@@ -89,6 +89,15 @@ const updatelink = async (values) => {
     });
 }
 
+const updateCountLink = async (values) => {
+  const token = TokenService.getUser();
+  return axios.patch(`${process.env.REACT_APP_API_URL}/api/update-link-count-click`, values, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+}
+
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
   return axios.delete(`${process.env.REACT_APP_API_URL}/api/delete-link/${id}`, {
@@ -129,7 +138,8 @@ const AuthLinkProvider = {
   getLinkById,
   saveLogo,
   getLogo,
-  getAllLinksJustPage
+  getAllLinksJustPage,
+  updateCountLink
 }
 
 export default AuthLinkProvider;

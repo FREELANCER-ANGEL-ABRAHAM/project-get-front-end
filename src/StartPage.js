@@ -7,6 +7,7 @@ import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthLinkProvider from "./service/authLink";
+import TokenService from "./service/authToken";
 import './sass/components/_button.scss';
 
 const StartPage = () => {
@@ -21,7 +22,8 @@ const StartPage = () => {
     description: 'Para acceder a este contenido realiza lo siguiente:',
     image: socialLogo,
     url: '/result',
-    btn_name: 'Dale Like'
+    btn_name: 'Dale Like',
+    count_click: 0
   });
 
   useEffect(() => {
@@ -30,6 +32,11 @@ const StartPage = () => {
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);
+          if(enableButton){
+            if(TokenService.getClickStatus() === 'true'){
+              setEnableButton(false);
+            }
+          }
         }
       } catch (error) {
         console.error(error);
@@ -37,9 +44,20 @@ const StartPage = () => {
     })();
   }, []); 
 
-  const routeChange = () =>{ 
-    let path = links.url; 
-    setEnableButton(false);
+  const routeChange = async () =>{ 
+    let path = links.url;
+    TokenService.setClickStatus();
+    if(TokenService.getClickStatus() === 'true'){
+      setEnableButton(false);
+    }
+    try {
+      const response = await AuthLinkProvider.getCurrentLink();
+      const values = {id: response._id, count_click: response.count_click + 1};
+      console.log(links.image);
+      await AuthLinkProvider.updateCountLink(values);
+    } catch (error) {
+      console.error(error);
+    }
     window.open(path, '_blank');
   }
   

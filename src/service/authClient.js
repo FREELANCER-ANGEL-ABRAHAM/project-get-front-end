@@ -14,8 +14,8 @@ const login = (password, username) => {
     })
 
 }
-
-const changePassword = (password, username) => {
+ 
+const changePassword = async (password, username) => {
   const token = TokenService.getUser();
   return axios.post(`${process.env.REACT_APP_API_URL}/api/change-password`, {
     headers: {
