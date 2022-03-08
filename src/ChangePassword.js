@@ -35,8 +35,32 @@ const ChangePassword = () => {
     }
   }
 
+  const formArr = [
+    {
+      placeholder: "Nombre de usuario",
+      name: "user",
+      id: "user",
+      type: "text",
+      required: "true",
+    },
+    {
+      placeholder: "Contraseña actual",
+      name: "currentPassword",
+      id: "currentPassword",
+      type: "password",
+      required: "true",
+    },
+    {
+      placeholder: "Contraseña nueva",
+      name: "newPassword",
+      id: "newPassword",
+      type: "password",
+      required: "true",
+    },
+  ]
+
   return (
-    <UserForm error={error} errorMessage={errorMessage} handleSubmit={handleSubmit} submitButton="Cambiar" />
+    <UserForm error={error} errorMessage={errorMessage} handleSubmit={handleSubmit} formArr={formArr} submitButton="Cambiar" />
   )
 }
 
