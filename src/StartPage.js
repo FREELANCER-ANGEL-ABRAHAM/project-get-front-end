@@ -42,6 +42,7 @@ const StartPage = () => {
     setEnableButton(false);
     window.open(path, '_blank');
   }
+  
 
   return (
     <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
@@ -50,7 +51,7 @@ const StartPage = () => {
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
             <Card.Body style={{fontSize: "1em"}}>{links.description}</Card.Body>
-            { links.image ? <SocialIcon src={links.image} className="text-center mt-3 mb-5" height={80} width={82.05} /> : null }
+            { links.image ? <SocialIcon src={links.image} className="text-center m-2" height={80} width={82.05} /> : null }
             <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
           </Card>
       

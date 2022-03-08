@@ -3,7 +3,7 @@ import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from '../service/authLink';
 
-const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
+const CardLink = ({ id, name, visibility, status, onStatusChange, count_click}) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
@@ -86,6 +86,9 @@ const CardLink = ({ id, name, visibility, status, onStatusChange }) => {
                 checked={ status === 'active'}
                 onChange={handleUpdateStatus}
               />
+              <p>
+                Cantidad de clicks: <span className='font-weight-bold'>{count_click}</span> 
+              </p>
               {error && (
                 <div className="mt-2">
                   <Alert variant={'danger'} className="mt-2">

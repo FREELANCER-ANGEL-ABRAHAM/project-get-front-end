@@ -35,9 +35,11 @@ function CreateLink() {
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
       setShowImageSelector(true)
+    } else if (event.target.value === "youtube") {
+      setPictureValue(youtubeIcon);
+      console.log("Youtube")
     } else {
       setShowImageSelector(false)
-      setPictureValue(youtubeIcon);
     }
   }
 
@@ -109,7 +111,7 @@ function CreateLink() {
         </div>
       )}
 
-      <Row className='align-items-center mt-5'>
+      <Row className='align-items-center mt-4 mb-5'>
         <div className="col-12 col-md-6 mx-auto">
           <Card className='shadow p-2'>
             <Card.Body>
@@ -143,7 +145,7 @@ function CreateLink() {
                 <Form.Group className='mt-2'>
                   <Form.Label>Imagen.</Form.Label>
                   <Form.Select name='imagen_select' onChange={handleShowImageSelector} >
-                    <option disabled="true">Selecciona una imagen</option>
+                    <option disabled={true}>Selecciona una imagen</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>
