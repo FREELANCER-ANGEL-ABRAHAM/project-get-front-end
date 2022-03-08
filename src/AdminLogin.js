@@ -34,9 +34,8 @@ const AdminLogin = () => {
   }
 
   const redirect = {
-    label: "Olvidaste la contrasena?.",
     link: {
-      label: "Cambiar contrasena",
+      label: "Cambiar contraseña",
       to: "/changepassword"
     }
   }

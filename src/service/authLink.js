@@ -47,6 +47,15 @@ const getCurrentLink = async () => {
   }
 }
 
+const updateLinkCounter = async () => {
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/update-link-count-click`);
+    return res.data.links;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const getLogo = async () => {
   try {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/logo`);
@@ -117,6 +126,8 @@ const saveLink = async (values) => {
     }
   });
 }
+
+
 
 const AuthLinkProvider = {
   getAllLinks,
