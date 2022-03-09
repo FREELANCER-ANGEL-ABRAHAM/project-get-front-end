@@ -32,7 +32,7 @@ const StartPage = () => {
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);
-          if(enableButton){
+          if(enableButton === true){
             if(TokenService.getClickStatus() === 'true'){
               setEnableButton(false);
             }
@@ -42,7 +42,7 @@ const StartPage = () => {
         console.error(error);
       }
     })();
-  }, []); 
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   let path = links.url;
 

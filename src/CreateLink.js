@@ -40,6 +40,7 @@ function CreateLink() {
       setShowImageSelector(true)
     } else {
       setShowImageSelector(false)
+      handleChangeSelect(event);
     }
   }
 
@@ -106,6 +107,9 @@ function CreateLink() {
     if (value === "twitter") {
       value = Stwitter;
     }
+    if(value === "ninguno"){
+      value = "";
+    }
     setLink((Link) => {
       return { ...Link, [name]: value };
     });
@@ -156,6 +160,7 @@ function CreateLink() {
                   <Form.Label>Imagen.</Form.Label>
                   <Form.Select name='imagen_select' onChange={handleShowImageSelector} >
                     <option disabled={true}>Selecciona una imagen</option>
+                    <option value="ninguno">Ninguno</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>

@@ -120,6 +120,9 @@ const ModifyLink = () => {
     if (value === "twitter") {
       value = Stwitter;
     }
+    if(value === "ninguno"){
+      value = "";
+    }
     setLink((Link) => {
       return { ...Link, [name]: value };
     });
@@ -170,6 +173,7 @@ const ModifyLink = () => {
                   <Form.Label>Imagen.</Form.Label>
                   <Form.Select id='imagen_select' name='imagen_select' onChange={handleShowImageSelector} >
                     <option disabled={true}>Selecciona una imagen</option>
+                    <option value="ninguno">Ninguno</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>
                     <option value="facebook">Facebook</option>
