@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Styles = styled.a`
+const Styles = styled.button`
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -27,7 +27,7 @@ const Styles = styled.a`
 
 const CustomButton = ({ children, onClick, type, fontSize, style, href, target }) => {
   return (
-    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} href={href} target={target} style={style}>
+    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} style={style}>
       {children}
     </Styles>
   );
