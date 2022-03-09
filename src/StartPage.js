@@ -6,8 +6,8 @@ import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AuthLinkProvider from "./service/authLink";
-import TokenService from "./service/authToken";
+import AuthLinkProvider from "./service/AuthLinkProvider";
+import TokenService from "./service/TokenService";
 import './sass/components/_button.scss';
 
 const StartPage = () => {
