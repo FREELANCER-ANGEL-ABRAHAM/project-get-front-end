@@ -14,6 +14,14 @@ const login = (password, username) => {
     })
 
 }
+ 
+const changePassword = async (username, password, newPassword) => {
+  return axios.patch(`${process.env.REACT_APP_API_URL}/api/change-password`, {
+    username,
+    password,
+    newPassword
+  });
+}
 
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("userCredentials"));
@@ -21,6 +29,7 @@ const getCurrentUser = () => {
 
 const authClient = {
   login,
+  changePassword,
   getCurrentUser
 }
 

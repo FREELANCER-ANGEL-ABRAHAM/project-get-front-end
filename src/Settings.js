@@ -30,11 +30,18 @@ const Settings = ()  => {
     form_data.append('status', 'active');
 
     try {
-      await AuthLinkProvider.saveLogo(form_data);
-      setPictureValue();
-      setLogo({});
-      navigate("/panel");
-      window.location.reload();
+      const resp = await AuthLinkProvider.saveLogo(form_data);
+      if(resp === undefined){
+        const re = await TokenService.getNewTokenCredentials();
+        TokenService.setUser(re);
+        window.location.reload();
+      }
+      else{
+        setPictureValue();
+        setLogo({});
+        navigate("/panel");
+        window.location.reload();
+      }
     } catch (err) {
       const response = err.response.data.error.message;
       setErrorMessage(response);

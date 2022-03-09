@@ -27,7 +27,7 @@ const Result = ({id}) => {
       <Card className="col-12 col-md-4 mx-auto my-auto d-flex shadow p-4 text-center" style={{border: "none"}}>
         <CustomIcon src={success} alt="icon" height={25}></CustomIcon>
         <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.detail_result}</Card.Title>
-        <Card.Body style={{fontSize: "1em"}}>Contenido: {links.contain_result}</Card.Body>
+        <Card.Body style={{fontSize: "1em"}}>{links.contain_result}</Card.Body>
       </Card>
     </Row>
   );
