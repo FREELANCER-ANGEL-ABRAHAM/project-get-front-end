@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import AuthLinkProvider from '../service/authLink';
-import TokenService from '../service/authToken';
+import AuthLinkProvider from '../service/AuthLinkProvider';
+import TokenService from '../service/TokenService';
 
 const CardLink = ({ id, name, visibility, status, onStatusChange, count_click }) => {
   const navigate = useNavigate();

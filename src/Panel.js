@@ -5,8 +5,8 @@ import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
 import { useNavigate } from "react-router-dom";
 import LinkSearchModal from "./components/LinkSearchModal";
-import AuthLinkProvider from "./service/authLink";
-import TokenService from "./service/authToken";
+import AuthLinkProvider from "./service/AuthLinkProvider";
+import TokenService from "./service/TokenService";
 
 const Panel = () => {
 

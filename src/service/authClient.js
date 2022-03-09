@@ -1,5 +1,5 @@
 import axios from 'axios'
-import TokenService from './authToken';
+import TokenService from './TokenService';
 
 const login = (password, username) => {
   return axios.post(`${process.env.REACT_APP_API_URL}/api/login`, {
