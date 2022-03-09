@@ -44,8 +44,9 @@ const StartPage = () => {
     })();
   }, []); 
 
+  let path = links.url;
+
   const routeChange = async () =>{ 
-    let path = links.url;
     TokenService.setClickStatus();
     if(TokenService.getClickStatus() === 'true'){
       setEnableButton(false);
@@ -58,7 +59,6 @@ const StartPage = () => {
     } catch (error) {
       console.error(error);
     }
-    window.open(path, '_blank');
   }
   
 
@@ -68,9 +68,9 @@ const StartPage = () => {
         <Card className="mx-auto shadow p-3 text-center" style={{border: "none",}}>
             <CustomIcon src={lock} alt="icon" height={25}></CustomIcon>
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
-            <Card.Body style={{fontSize: "1em"}}>{links.description}</Card.Body>
-            { links.image ? <SocialIcon src={links.image} className="text-center m-2" height={80} width={82.05} /> : null }
-            <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
+            <Card.Body style={{fontSize: "1em", padding: 0}}>{links.description}</Card.Body>
+            { links.image ? <SocialIcon src={links.image} className="text-center m-3" height={80} width={82.05}/> : null }
+            <CustomButton children={links.btn_name} onClick={ () => routeChange()} href={path} target="_blank" style={{}} />
           </Card>
       
           <Button 

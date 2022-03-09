@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Styles = styled.button`
+const Styles = styled.a`
   @media (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -16,16 +16,18 @@ const Styles = styled.button`
   color: #FFFF;
   font-weight: bold;
   text-transform: uppercase;
+  text-decoration: none;
  
   width: 100%;
   &:hover {
     background-color: #B01313;
+    color: white
   }
 `
 
-const CustomButton = ({ children, onClick, type, fontSize, style, target }) => {
+const CustomButton = ({ children, onClick, type, fontSize, style, href, target }) => {
   return (
-    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} style={style}>
+    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} href={href} target={target} style={style}>
       {children}
     </Styles>
   );
