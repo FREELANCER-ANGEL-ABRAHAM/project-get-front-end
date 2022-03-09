@@ -14,6 +14,7 @@ import CreateLink from './CreateLink';
 import Footer from './components/Footer';
 import ModifyLink from './ModifyLink';
 import backArrow from './assets/backarrow.svg'
+import ChangePassword from './ChangePassword';
 
 function App() {
 
@@ -28,7 +29,7 @@ function App() {
     navbarComponent = <NavigationBar navbarTitle="Crear link" settingsDisplay="d-block" logoutDisplay="d-block" />
   } else if(location.pathname === "/modify"){
     navbarComponent = <NavigationBar navbarTitle="Modificar link" settingsDisplay="d-block" logoutDisplay="d-block" />
-  } else if(location.pathname === "/admin") {
+  } else if(location.pathname === "/admin" || location.pathname === "/changepassword") {
     footerComponent = <Footer actionText="Regresar" actionHref="/" />
     navbarComponent = <NavigationBar brandDisplay="d-block" settingsDisplay="d-none"/>
   } else if(location.pathname === "/settings"){
@@ -53,6 +54,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<StartPage />} />
           <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/panel" element={<Panel/>} />
           <Route path="/result" element={<Result />} />
           <Route path="/create" element={<CreateLink />} />

@@ -32,8 +32,15 @@ const Panel = () => {
           navigate('/admin');
         }
         const response = await AuthLinkProvider.getAllLinksJustPage(currentPage);
-        setLinks(response.docs);
-        setTotalPages(response.totalPages);
+        if(response === undefined){
+          const re = await TokenService.getNewTokenCredentials();
+          TokenService.setUser(re);
+          window.location.reload();
+        }
+        else{
+          setLinks(response.docs);
+          setTotalPages(response.totalPages);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -66,6 +73,7 @@ const Panel = () => {
               name={item['name']}
               visibility={item['visibility']}
               status={item['status']}
+              count_click={item['count_click']}
               onStatusChange={refresh}
             />
           ))
