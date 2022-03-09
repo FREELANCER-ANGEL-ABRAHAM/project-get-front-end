@@ -2,7 +2,7 @@ import { Card, Row } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
 import success from "./assets/check.svg"
 import React, {useState, useEffect} from 'react';
-import AuthLinkProvider from "./service/authLink";
+import AuthLinkProvider from "./service/AuthLinkProvider";
 
 const Result = ({id}) => {
   const [links, setLinks] = useState({

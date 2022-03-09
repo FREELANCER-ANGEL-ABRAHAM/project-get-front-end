@@ -1,8 +1,8 @@
 import { Form, Row, Card, Button, Alert } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import AuthLinkProvider from './service/authLink';
-import TokenService from './service/authToken';
+import AuthLinkProvider from './service/AuthLinkProvider';
+import TokenService from './service/TokenService';
 import Sinstagram from './assets/socialmedia-logos/instagram.svg'
 import SyoutubeIcon from './assets/socialmedia-logos/youtube-svgrepo-com.svg'
 import Stwitter from './assets/socialmedia-logos/twitter-svgrepo-com.svg'

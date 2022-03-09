@@ -6,8 +6,8 @@ import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import AuthLinkProvider from "./service/authLink";
-import TokenService from "./service/authToken";
+import AuthLinkProvider from "./service/AuthLinkProvider";
+import TokenService from "./service/TokenService";
 import './sass/components/_button.scss';
 
 const StartPage = () => {
@@ -70,7 +70,9 @@ const StartPage = () => {
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
             <Card.Body style={{fontSize: "1em", padding: 0}}>{links.description}</Card.Body>
             { links.image ? <SocialIcon src={links.image} className="text-center m-3" height={80} width={82.05}/> : null }
-            <CustomButton children={links.btn_name} onClick={ () => routeChange()} href={path} target="_blank" style={{}} />
+            <a href={path} rel="noreferrer" target="_blank">
+              <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
+            </a>
           </Card>
       
           <Button 

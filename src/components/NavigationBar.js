@@ -1,9 +1,9 @@
 import { Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import webLogo from '../assets/logo.svg';
-import TokenService from '../service/authToken';
+import TokenService from '../service/TokenService';
 import { useState, useEffect } from "react";
-import AuthLinkProvider from '../service/authLink';
+import AuthLinkProvider from '../service/AuthLinkProvider';
 
 const Styles = styled.div`
   .navbar {
