@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Card, Form, Button, Row, Alert} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
-import AuthLinkProvider from './service/authLink';
-import TokenService from './service/authToken';
+import AuthLinkProvider from './service/AuthLinkProvider';
+import TokenService from './service/TokenService';
 
 const Settings = ()  => {
   const navigate = useNavigate();

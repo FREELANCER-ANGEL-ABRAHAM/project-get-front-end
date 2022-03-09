@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, Form, Alert, Modal, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import AuthLinkProvider from '../service/authLink';
+import AuthLinkProvider from '../service/AuthLinkProvider';
 
 const CardRow = ({ id, name, visibility, status, onStatusChange }) => {
   const navigate = useNavigate();

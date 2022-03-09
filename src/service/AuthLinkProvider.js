@@ -1,5 +1,5 @@
 import axios from 'axios';
-import TokenService from './authToken';
+import TokenService from './TokenService';
 
 const getAllLinks = async (name, page = 1, limit = 9) => {
   try {
