@@ -77,7 +77,7 @@ const StartPage = () => {
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
             <Card.Body style={{fontSize: "1em", padding: 0}}>{links.description}</Card.Body>
             { links.image ? <SocialIcon src={links.image} className="text-center m-3" height={80} width={82.05}/> : null }
-            <a href={path} target="_blank">
+            <a href={path} target="_blank" rel="noopener noreferrer">
               <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
             </a>
           </Card>
