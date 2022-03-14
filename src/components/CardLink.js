@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from '../service/AuthLinkProvider';
-import TokenService from '../service/TokenService';
 
 const CardLink = ({ id, name, visibility, status, onStatusChange, count_click }) => {
   const navigate = useNavigate();
@@ -19,9 +18,23 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       const values = {
         id,
         visibility,
-        status: e.target.checked ? 'active' : 'disable',
+        status: e.target.checked ? 'active' : 'disable', 
       }
-      TokenService.removeClickStatus();
+      if(values.status === 'active'){
+        var current =  new Date();
+        const dataActive = {
+          id,
+          active_at: current.toLocaleTimeString()
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
+      else{
+        const dataActive = {
+          id,
+          active_at: ''
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -37,7 +50,6 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
 
   const handleDeleteLink = async () => {
     try {
-      TokenService.removeClickStatus();
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (err) {

@@ -10,7 +10,7 @@ const CardRow = ({ id, name, visibility, status, onStatusChange }) => {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true); 
 
   const handleUpdateStatus = async (e) => {
     try {
@@ -19,6 +19,22 @@ const CardRow = ({ id, name, visibility, status, onStatusChange }) => {
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
+      if(values.status === 'active'){
+        var current =  new Date();
+        const dataActive = {
+          id,
+          active_at: current.toLocaleTimeString()
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
+      else{
+        const dataActive = {
+          id,
+          active_at: ''
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
+      
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();

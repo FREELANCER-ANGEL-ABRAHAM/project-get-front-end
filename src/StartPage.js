@@ -1,6 +1,5 @@
 import { Card, Button, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
-import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
 import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
@@ -18,24 +17,32 @@ const StartPage = () => {
 
   const [links, setLinks] = useState({
     id: 1,
-    title: 'Complete los pasos para continuar.',
-    description: 'Para acceder a este contenido realiza lo siguiente:',
-    image: socialLogo,
-    url: '/result',
-    btn_name: 'Dale Like',
+    title: '',
+    description: '',
+    image: '',
+    url: '',
+    btn_name: '',
     count_click: 0
   });
-
   useEffect(() => {
     ( async () => {
       try {
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);
-          if(enableButton === true){
-            if(TokenService.getClickStatus() === 'true'){
+          const currentStorage = JSON.parse(localStorage.getItem('Clicked'));
+          if(currentStorage === null){
+            setEnableButton(true);  
+          }
+          else{
+            let temp = JSON.parse(localStorage.getItem('Clicked'));
+            if(temp.id !== response._id){
+              localStorage.removeItem('Clicked');
+            }
+            else{
               setEnableButton(false);
             }
+            
           }
         }
       } catch (error) {
@@ -47,14 +54,14 @@ const StartPage = () => {
   let path = links.url;
 
   const routeChange = async () =>{ 
-    TokenService.setClickStatus();
-    if(TokenService.getClickStatus() === 'true'){
+    await TokenService.clickStatus();
+    const currentStorage = localStorage.getItem('Clicked');
+    if(currentStorage !== null){
       setEnableButton(false);
     }
     try {
       const response = await AuthLinkProvider.getCurrentLink();
       const values = {id: response._id, count_click: response.count_click + 1};
-      console.log(links.image);
       await AuthLinkProvider.updateCountLink(values);
     } catch (error) {
       console.error(error);
