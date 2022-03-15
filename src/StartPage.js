@@ -16,7 +16,7 @@ const StartPage = () => {
   const [enableButton, setEnableButton] = useState(true);
 
   const [links, setLinks] = useState({
-    id: 1,
+    id: this.props.match.params.id,
     title: 'No hay link activo',
     description: '',
     image: '',
@@ -27,6 +27,7 @@ const StartPage = () => {
   useEffect(() => {
     ( async () => {
       try {
+        console.log(links.id);
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);

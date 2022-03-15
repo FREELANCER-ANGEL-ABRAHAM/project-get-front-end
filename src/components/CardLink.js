@@ -98,7 +98,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
                     onChange={handleUpdateStatus}
                     style={{ marginRight: "5px" }}
                   />
-                  {error && (
+                  {error && ( 
                     <div className="p-2">
                       <Alert variant={'danger'} className="">
                         {errorMessage}
@@ -127,6 +127,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
                     onChange={handleUpdateStatus}
                   />
                   <label>Cantidad de Click: {count_click}</label>
+                  <label>URL: <a href={`/${id}`} className="text-muted">{process.env.REACT_APP_API_URL+"/"+id}</a></label>
                   {error && (
                     <div className="mt-2">
                       <Alert variant={'danger'} className="mt-2">
