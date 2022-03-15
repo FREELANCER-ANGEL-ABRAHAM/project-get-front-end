@@ -89,15 +89,6 @@ const updateCountLink = async (values) => {
   });
 }
 
-const updateActivetLink = async (values) => {
-  const token = TokenService.getUser();
-  return axios.patch(`${process.env.REACT_APP_API_URL}/api/update-link-active_at`, values, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  });
-}
-
 const deleteLink = async (id) => {
   const token = TokenService.getUser();
   return axios.delete(`${process.env.REACT_APP_API_URL}/api/delete-link/${id}`, {
@@ -131,7 +122,6 @@ const saveLink = async (values) => {
 
 const AuthLinkProvider = {
   getAllLinks,
-  updateActivetLink,
   getCurrentLink,
   updatelink,
   deleteLink,
