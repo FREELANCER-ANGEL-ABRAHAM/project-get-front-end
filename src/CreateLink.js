@@ -159,7 +159,7 @@ function CreateLink() {
                 <Form.Group className='mt-2'>
                   <Form.Label>Imagen.</Form.Label>
                   <Form.Select name='imagen_select' onChange={handleShowImageSelector} >
-                    <option disabled={true}>Selecciona una imagen</option>
+                    <option disabled={true} selected>Selecciona una imagen</option>
                     <option value="ninguno">Ninguno</option>
                     <option value="youtube">Youtube</option>
                     <option value="instagram">Instagram</option>

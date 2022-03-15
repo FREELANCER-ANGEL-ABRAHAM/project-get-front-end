@@ -24,17 +24,25 @@ const StartPage = () => {
     btn_name: '',
     count_click: 0
   });
-
   useEffect(() => {
     ( async () => {
       try {
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);
-          if(enableButton === true){
-            if(TokenService.getClickStatus() === 'true'){
+          const currentStorage = JSON.parse(localStorage.getItem('Clicked'));
+          if(currentStorage === null){
+            setEnableButton(true);  
+          }
+          else{
+            let temp = JSON.parse(localStorage.getItem('Clicked'));
+            if(temp.id !== response._id){
+              localStorage.removeItem('Clicked');
+            }
+            else{
               setEnableButton(false);
             }
+            
           }
         }
       } catch (error) {
@@ -46,14 +54,14 @@ const StartPage = () => {
   let path = links.url;
 
   const routeChange = async () =>{ 
-    TokenService.setClickStatus();
-    if(TokenService.getClickStatus() === 'true'){
+    await TokenService.clickStatus();
+    const currentStorage = localStorage.getItem('Clicked');
+    if(currentStorage !== null){
       setEnableButton(false);
     }
     try {
       const response = await AuthLinkProvider.getCurrentLink();
       const values = {id: response._id, count_click: response.count_click + 1};
-      console.log(links.image);
       await AuthLinkProvider.updateCountLink(values);
     } catch (error) {
       console.error(error);
