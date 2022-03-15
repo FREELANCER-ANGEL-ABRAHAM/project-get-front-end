@@ -1,5 +1,4 @@
 import axios from "axios";
-import AuthLinkProvider from "./AuthLinkProvider";
 
 const updateNewAccessToken = (token) => {
   JSON.parse(localStorage.getItem("Token"));
@@ -11,18 +10,15 @@ const getUser = () => {
 }
 
 const getNewTokenCredentials = async () => {
-  try {
-    const refreshToken = getLocalRefreshToken();
-    const res =  await axios.post(`${process.env.REACT_APP_API_URL}/api/refresh-token`, {}, {
-      headers: {
-        authorization : `Bearer ${refreshToken}`
-      }
-    }); 
-    return res.data.response;
+  const refreshToken = getLocalRefreshToken();
+  const body = {};
+  const res =  await axios.post(`${process.env.REACT_APP_API_URL}/api/refresh-token`, body, {
+    headers: {
+      authorization : `Bearer ${refreshToken}`
+    }
+  });
 
-  } catch (error) {
-    console.log(error); 
-  }
+  return res.data.response;
 }
 
 const getLocalAccessToken = () => {
@@ -47,17 +43,16 @@ const removeUser = () => {
   localStorage.removeItem("refreshToken");
 }
 
-const clickStatus = async () => {
-  const currentLink = await AuthLinkProvider.getCurrentLink();
-  const data = {id: currentLink._id, active_at: currentLink.active_at}
-  localStorage.setItem("Clicked", JSON.stringify(data));
+const removeClickStatus = () => {
+  localStorage.removeItem("Clicked");
 }
 
-const verifyClickStatus = async() => {
-  const currentLink = await AuthLinkProvider.getCurrentLink();
-  const currentStorage = getClickStatus();
+const clickStatus = () => {
+  localStorage.setItem("Clicked", JSON.stringify(false));
+}
 
-  console.log(currentLink._id + " " + currentStorage.id);
+const setClickStatus = () => {
+  localStorage.setItem("Clicked", JSON.stringify(true));
 }
 
 const TokenService = {
@@ -66,8 +61,9 @@ const TokenService = {
   setUser,
   removeUser,
   clickStatus,
-  verifyClickStatus,
+  setClickStatus,
   getClickStatus,
+  removeClickStatus,
   getLocalRefreshToken,
   getLocalAccessToken,
   getNewTokenCredentials
