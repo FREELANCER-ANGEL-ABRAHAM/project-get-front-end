@@ -1,6 +1,5 @@
 import { Card, Button, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
-import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
 import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
@@ -18,11 +17,11 @@ const StartPage = () => {
 
   const [links, setLinks] = useState({
     id: 1,
-    title: 'Complete los pasos para continuar.',
-    description: 'Para acceder a este contenido realiza lo siguiente:',
-    image: socialLogo,
-    url: '/result',
-    btn_name: 'Dale Like',
+    title: 'No hay link activo',
+    description: '',
+    image: '',
+    url: '',
+    btn_name: '',
     count_click: 0
   });
 

@@ -2,7 +2,7 @@ import { React, useState, useEffect, useCallback } from 'react';
 import { Button, Form, Row, Pagination } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import AuthLinkProvider from '../service/AuthLinkProvider';
-import CardRow from './CardRow';
+import CardLink from './CardLink';
 
 function LinkSearchModal(props) {
   const [search, setSearch] = useState('');
@@ -72,13 +72,14 @@ function LinkSearchModal(props) {
         <Row className="mt-2 gy-4">
         {
           links.length > 0 ? links.map((item) => (
-            <CardRow
+            <CardLink
               key={item['_id']}
               id={item['_id']}
               name={item['name']}
               visibility={item['visibility']}
               status={item['status']}
               onStatusChange={refresh}
+              rowActive={true}
             />
           )) : <p className='m-5 text-center'>
             No se encontraron coincidencias.
