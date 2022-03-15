@@ -21,21 +21,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
-      if(values.status === 'active'){
-        var current =  new Date();
-        const dataActive = {
-          id,
-          active_at: current.toLocaleTimeString()
-        }
-        await AuthLinkProvider.updateActivetLink(dataActive);
-      }
-      else{
-        const dataActive = {
-          id,
-          active_at: ''
-        }
-        await AuthLinkProvider.updateActivetLink(dataActive);
-      }
+      TokenService.removeClickStatus();
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -43,7 +29,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
       const response = err.response.data.error.message;
       setErrorMessage(response);
 
-      if(response) {
+      if (response) {
         setError(true);
       }
     }
@@ -51,6 +37,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
 
   const handleDeleteLink = async () => {
     try {
+      TokenService.removeClickStatus();
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (err) {
