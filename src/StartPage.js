@@ -17,7 +17,7 @@ const StartPage = () => {
 
   const [links, setLinks] = useState({
     id: 1,
-    title: '',
+    title: 'No hay link activo',
     description: '',
     image: '',
     url: '',
