@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
+import { Card, Button, Form, Alert, Modal, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from '../service/AuthLinkProvider';
-import TokenService from '../service/TokenService';
 
-const CardLink = ({ id, name, visibility, status, onStatusChange, count_click }) => {
+const CardRow = ({ id, name, visibility, status, onStatusChange }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false); 
-  
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleUpdateStatus = async (e) => {
@@ -21,21 +19,6 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
-      if(values.status === 'active'){
-        var current =  new Date();
-        const dataActive = {
-          id,
-          active_at: current.toLocaleTimeString()
-        }
-        await AuthLinkProvider.updateActivetLink(dataActive);
-      }
-      else{
-        const dataActive = {
-          id,
-          active_at: ''
-        }
-        await AuthLinkProvider.updateActivetLink(dataActive);
-      }
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -43,11 +26,11 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       const response = err.response.data.error.message;
       setErrorMessage(response);
 
-      if(response) {
+      if (response) {
         setError(true);
       }
     }
-  } 
+  }
 
   const handleDeleteLink = async () => {
     try {
@@ -57,7 +40,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       const response = err.response.data.error.message;
       setErrorMessage(response);
 
-      if(response) {
+      if (response) {
         setError(true);
       }
     }
@@ -81,28 +64,35 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       </Modal>
 
 
-      <div className="col-12 col-md-6 col-lg-4">
+      <div className="col-12">
         <Card className="shadow-sm">
           <Card.Body>
-            <Card.Title style={{fontWeight: "600", fontSize: "1.5em"}}>
-              {name}
-            </Card.Title>
-            <div className="d-grid gap-2 pt-2">
-              <Button className="p-4" variant="primary" size="lg" style={{fontWeight: 700, fontSize: "1em"}} onClick={() => navigate(`/modify/${id}`)}>
-                Modificar
-              </Button>
-              <Button className="p-4" variant="danger" size="lg" style={{fontWeight: 700, fontSize: "1em"}} onClick={handleShow}>
-                Eliminar
-              </Button>
-              <Form.Check
-                className="mt-1"
-                type="switch"
-                id="linkEnabled"
-                label="Activar este link"
-                checked={ status === 'active'}
-                onChange={handleUpdateStatus}
-              />
-              <label>Cantidad de Click: {count_click}</label>
+            <Row>
+              <div className='col-6'>
+                <Card.Title style={{ fontWeight: "600", fontSize: "1.5em" }}>
+                  {name}
+                </Card.Title>
+              </div>
+              <div className='col-6' style={{ textAlign: "right" }}>
+
+                <Form.Check
+                  type="switch"
+                  id="linkEnabled"
+                  className='d-inline'
+                  checked={status === 'active'}
+                  onChange={handleUpdateStatus}
+                  style={{marginRight: "5px"}}
+                />
+                <Button variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={() => navigate(`/modify/${id}`)}>
+                  <i class="bi bi-pencil"></i>
+                </Button>
+                <Button variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={handleShow}>
+                  <i class="bi bi-trash"></i>
+                </Button>
+              </div>
+            </Row>
+
+            <div className="">
               {error && (
                 <div className="mt-2">
                   <Alert variant={'danger'} className="mt-2">
@@ -118,4 +108,4 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
   );
 }
 
-export default CardLink;
+export default CardRow;

@@ -1,5 +1,6 @@
 import { Card, Button, Container } from "react-bootstrap";
 import CustomIcon from "./components/CustomIcon";
+import socialLogo from "./assets/socialmedia-logos/instagram.svg"
 import lock from "./assets/lock.svg"
 import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
@@ -24,25 +25,17 @@ const StartPage = () => {
     btn_name: '',
     count_click: 0
   });
+
   useEffect(() => {
     ( async () => {
       try {
         const response = await AuthLinkProvider.getCurrentLink();
         if(response){
           setLinks(response);
-          const currentStorage = JSON.parse(localStorage.getItem('Clicked'));
-          if(currentStorage === null){
-            setEnableButton(true);  
-          }
-          else{
-            let temp = JSON.parse(localStorage.getItem('Clicked'));
-            if(temp.id !== response._id){
-              localStorage.removeItem('Clicked');
-            }
-            else{
+          if(enableButton === true){
+            if(TokenService.getClickStatus() === 'true'){
               setEnableButton(false);
             }
-            
           }
         }
       } catch (error) {
@@ -54,14 +47,14 @@ const StartPage = () => {
   let path = links.url;
 
   const routeChange = async () =>{ 
-    await TokenService.clickStatus();
-    const currentStorage = localStorage.getItem('Clicked');
-    if(currentStorage !== null){
+    TokenService.setClickStatus();
+    if(TokenService.getClickStatus() === 'true'){
       setEnableButton(false);
     }
     try {
       const response = await AuthLinkProvider.getCurrentLink();
       const values = {id: response._id, count_click: response.count_click + 1};
+      console.log(links.image);
       await AuthLinkProvider.updateCountLink(values);
     } catch (error) {
       console.error(error);
@@ -77,7 +70,7 @@ const StartPage = () => {
             <Card.Title style={{fontWeight: "bold", fontSize: "1.5em"}}>{links.title}</Card.Title>
             <Card.Body style={{fontSize: "1em", padding: 0}}>{links.description}</Card.Body>
             { links.image ? <SocialIcon src={links.image} className="text-center m-3" height={80} width={82.05}/> : null }
-            <a href={path} target="_blank" rel="noopener noreferrer">
+            <a href={path} target="_blank">
               <CustomButton children={links.btn_name} onClick={ () => routeChange()} style={{}} />
             </a>
           </Card>
