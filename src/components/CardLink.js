@@ -21,7 +21,21 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
-      TokenService.removeClickStatus();
+      if(values.status === 'active'){
+        var current =  new Date();
+        const dataActive = {
+          id,
+          active_at: current.toLocaleTimeString()
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
+      else{
+        const dataActive = {
+          id,
+          active_at: ''
+        }
+        await AuthLinkProvider.updateActivetLink(dataActive);
+      }
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -37,7 +51,6 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
 
   const handleDeleteLink = async () => {
     try {
-      TokenService.removeClickStatus();
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (err) {
@@ -86,6 +99,13 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click, r
                     onChange={handleUpdateStatus}
                     style={{ marginRight: "5px" }}
                   />
+                  {error && (
+                    <div className="p-2">
+                      <Alert variant={'danger'} className="">
+                        {errorMessage}
+                      </Alert>
+                    </div>
+                  )}
                   <Button variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={() => navigate(`/modify/${id}`)}>
                     <i class="bi bi-pencil"></i>
                   </Button>
