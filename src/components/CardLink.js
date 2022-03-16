@@ -2,26 +2,25 @@ import React, { useState } from 'react';
 import { Card, Button, Form, Alert, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import AuthLinkProvider from '../service/AuthLinkProvider';
-import TokenService from '../service/TokenService';
 
-const CardLink = ({ id, name, visibility, status, onStatusChange, count_click }) => {
+const CardLink = ({ id, name, visibility, status, onStatusChange, rowActive, count_click }) => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
   const [error, setError] = useState(false);
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false); 
-  
+  const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
 
   const handleUpdateStatus = async (e) => {
     try {
+      console.log(id);
       const values = {
         id,
         visibility,
         status: e.target.checked ? 'active' : 'disable',
       }
-      TokenService.removeClickStatus();
       await AuthLinkProvider.updatelink(values);
       onStatusChange?.()
       window.location.reload();
@@ -29,22 +28,21 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       const response = err.response.data.error.message;
       setErrorMessage(response);
 
-      if(response) {
+      if (response) {
         setError(true);
       }
     }
-  } 
+  }
 
   const handleDeleteLink = async () => {
     try {
-      TokenService.removeClickStatus();
       await AuthLinkProvider.deleteLink(id);
       onStatusChange?.()
     } catch (err) {
       const response = err.response.data.error.message;
       setErrorMessage(response);
 
-      if(response) {
+      if (response) {
         setError(true);
       }
     }
@@ -68,17 +66,17 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
       </Modal>
 
 
-      <div className="col-12 col-md-6 col-lg-4">
+      <div className={rowActive ? "row mb-2" : "col-12 col-md-6 col-lg-4"}>
         <Card className="shadow-sm">
           <Card.Body>
-            <Card.Title style={{fontWeight: "600", fontSize: "1.5em"}}>
+            <Card.Title style={{ fontWeight: "600", fontSize: "1.5em" }}>
               {name}
             </Card.Title>
-            <div className="d-grid gap-2 pt-2">
-              <Button className="p-4" variant="primary" size="lg" style={{fontWeight: 700, fontSize: "1em"}} onClick={() => navigate(`/modify/${id}`)}>
+            <div className={rowActive ? "" : "d-grid gap-2 pt-2"}>
+              <Button className="p-4" variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={() => navigate(`/modify/${id}`)}>
                 Modificar
               </Button>
-              <Button className="p-4" variant="danger" size="lg" style={{fontWeight: 700, fontSize: "1em"}} onClick={handleShow}>
+              <Button className="p-4" variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={handleShow}>
                 Eliminar
               </Button>
               <Form.Check
@@ -86,7 +84,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, count_click })
                 type="switch"
                 id="linkEnabled"
                 label="Activar este link"
-                checked={ status === 'active'}
+                checked={status === 'active'}
                 onChange={handleUpdateStatus}
               />
               <label>Cantidad de Click: {count_click}</label>
