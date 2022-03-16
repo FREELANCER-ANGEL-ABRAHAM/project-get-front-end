@@ -3,7 +3,7 @@ import CustomIcon from "./components/CustomIcon";
 import lock from "./assets/lock.svg"
 import SocialIcon from "./components/SocialIcon";
 import CustomButton from "./components/CustomButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import AuthLinkProvider from "./service/AuthLinkProvider";
 import TokenService from "./service/TokenService";
@@ -14,9 +14,9 @@ const StartPage = () => {
   const navigate = useNavigate()
 
   const [enableButton, setEnableButton] = useState(true);
-
+  const { id } = useParams();
   const [links, setLinks] = useState({
-    id: this.props.match.params.id,
+    id: 1,
     title: 'No hay link activo',
     description: '',
     image: '',
@@ -27,8 +27,7 @@ const StartPage = () => {
   useEffect(() => {
     ( async () => {
       try {
-        console.log(links.id);
-        const response = await AuthLinkProvider.getCurrentLink();
+        const response = await AuthLinkProvider.getLinkById(id);
         if(response){
           setLinks(response);
           const currentStorage = JSON.parse(localStorage.getItem('Clicked'));
@@ -55,13 +54,13 @@ const StartPage = () => {
   let path = links.url;
 
   const routeChange = async () =>{ 
-    await TokenService.clickStatus();
+    await TokenService.clickStatus(id);
     const currentStorage = localStorage.getItem('Clicked');
     if(currentStorage !== null){
       setEnableButton(false);
     }
     try {
-      const response = await AuthLinkProvider.getCurrentLink();
+      const response = await AuthLinkProvider.getLinkById(id);
       const values = {id: response._id, count_click: response.count_click + 1};
       await AuthLinkProvider.updateCountLink(values);
     } catch (error) {
