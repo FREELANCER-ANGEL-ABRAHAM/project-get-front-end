@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import LinkForm from './components/LinkForm';
 
 function CreateLink() {

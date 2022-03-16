@@ -79,14 +79,6 @@ function LinkForm({ isModifyActive, buttonText }) {
     }
   }, [id, navigate])
 
-  useEffect(() => {
-    (async () => {
-      if (!TokenService.getUser()) {
-        navigate('/admin');
-      }
-    })();
-  }, [navigate]);
-
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
       setShowImageSelector(true)
