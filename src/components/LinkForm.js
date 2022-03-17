@@ -195,7 +195,7 @@ function LinkForm({ isModifyActive, buttonText }) {
                 <Row>
                   <Form.Group className='col-12 col-md-6' >
                     <Form.Label>Nombre del link. *</Form.Label>
-                    <Form.Control name="name" placeholder='Nombre del link' onChange={handleChange} value={link?.name ?? ''} required={true} />
+                    <Form.Control name="name" placeholder='Nombre del link' maxLength={52} onChange={handleChange} value={link?.name ?? ''} required={true} />
                   </Form.Group>
                   <Form.Group className='col-12 col-md-6 mt-2 mt-sm-0'>
                     <Form.Label>Titulo.</Form.Label>
