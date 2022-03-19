@@ -47,8 +47,8 @@ const removeUser = () => {
   localStorage.removeItem("refreshToken");
 }
 
-const clickStatus = async () => {
-  const currentLink = await AuthLinkProvider.getCurrentLink();
+const clickStatus = async (id) => {
+  const currentLink = await AuthLinkProvider.getLinkById(id);
   const data = {id: currentLink._id, active_at: currentLink.active_at}
   localStorage.setItem("Clicked", JSON.stringify(data));
 }

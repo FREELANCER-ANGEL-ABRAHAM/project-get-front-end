@@ -6,7 +6,7 @@ import CustomButton from "../components/CustomButton";
 const StyledImage = styled.img`
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 50%; 
   text-align: center;
   font-size: 21.6px;
   border: 2px solid #3498db;

@@ -49,7 +49,7 @@ const ChangePassword = () => {
       id: "newPassword",
       type: "password",
       required: "true",
-    },
+    }, 
   ]
 
   return (
