@@ -69,32 +69,63 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, rowActive, cou
       <div className={rowActive ? "row mb-2" : "col-12 col-md-6 col-lg-4"}>
         <Card className="shadow-sm">
           <Card.Body>
-            <Card.Title style={{ fontWeight: "600", fontSize: "1.5em" }}>
-              {name}
-            </Card.Title>
-            <div className={rowActive ? "" : "d-grid gap-2 pt-2"}>
-              <Button className="p-4" variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={() => navigate(`/modify/${id}`)}>
-                Modificar
-              </Button>
-              <Button className="p-4" variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={handleShow}>
-                Eliminar
-              </Button>
-              <Form.Check
-                className="mt-1"
-                type="switch"
-                id="linkEnabled"
-                label="Activar este link"
-                checked={status === 'active'}
-                onChange={handleUpdateStatus}
-              />
-              <label>Cantidad de Click: {count_click}</label>
-              {error && (
-                <div className="mt-2">
-                  <Alert variant={'danger'} className="mt-2">
-                    {errorMessage}
-                  </Alert>
-                </div>
-              )}
+            <div className={rowActive ? "row" : null}>
+              <div className={rowActive ? "col-6" : null}>
+                <Card.Title style={{ fontWeight: "600", fontSize: "1.5em" }}>
+                  {name}
+                </Card.Title>
+              </div>
+              <div className={rowActive ? "col-6" : "d-grid gap-2 pt-2"} style={rowActive ? {textAlign: "right"} : null }>
+                {rowActive ? <div>
+                  <Form.Check
+                    type="switch"
+                    id="linkEnabled"
+                    className='d-inline'
+                    checked={status === 'active'}
+                    onChange={handleUpdateStatus}
+                    style={{ marginRight: "5px" }}
+                  />
+                  {error && ( 
+                    <div className="p-2">
+                      <Alert variant={'danger'} className="">
+                        {errorMessage}
+                      </Alert>
+                    </div>
+                  )}
+                  <Button variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={() => navigate(`/modify/${id}`)}>
+                    <i class="bi bi-pencil"></i>
+                  </Button>
+                  <Button variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em", marginRight: "5px" }} onClick={handleShow}>
+                    <i class="bi bi-trash"></i>
+                  </Button>
+                </div> : <div className='row gap-2 m-1'>
+                  <Button className="p-4" variant="primary" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={() => navigate(`/modify/${id}`)}>
+                    Modificar
+                  </Button>
+                  <Button className="p-4" variant="danger" size="lg" style={{ fontWeight: 700, fontSize: "1em" }} onClick={handleShow}>
+                    Eliminar
+                  </Button>
+                  <Form.Check
+                    className="mt-1"
+                    type="switch"
+                    id="linkEnabled"
+                    label="Activar este link"
+                    checked={status === 'active'}
+                    onChange={handleUpdateStatus}
+                  />
+                  <label>Cantidad de Click: {count_click}</label>
+                  {status === 'active' && (
+                    <label>URL: <a href={`/link/${id}`} className="text-muted">{"http://localhost:3000/link/"+id}</a></label>
+                  )}
+                  {error && (
+                    <div className="mt-2">
+                      <Alert variant={'danger'} className="mt-2">
+                        {errorMessage}
+                      </Alert>
+                    </div>
+                  )}
+                </div>}
+              </div>
             </div>
           </Card.Body>
         </Card>
