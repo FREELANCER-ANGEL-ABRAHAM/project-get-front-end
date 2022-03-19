@@ -115,7 +115,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, rowActive, cou
                   />
                   <label>Cantidad de Click: {count_click}</label>
                   {status === 'active' && (
-                    <label>URL: <a href={`/${id}`} className="text-muted">{process.env.REACT_APP_API_URL+"/"+id}</a></label>
+                    <label>URL: <a href={`/link/${id}`} className="text-muted">{"http://localhost:3000/link/"+id}</a></label>
                   )}
                   {error && (
                     <div className="mt-2">

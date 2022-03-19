@@ -52,7 +52,6 @@ const StartPage = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   let path = links.url;
-
   const routeChange = async () =>{ 
     await TokenService.clickStatus(id);
     const currentStorage = localStorage.getItem('Clicked');
