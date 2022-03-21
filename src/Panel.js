@@ -64,7 +64,7 @@ const Panel = () => {
   const [modalShow, setModalShow] = useState(false)
   return (
     <>
-      <Row className="mt-2 gy-4">
+      <Row className="mt-2 gy-4" id="panelRow">
         {
           links.map((item) => (
             <CardLink
