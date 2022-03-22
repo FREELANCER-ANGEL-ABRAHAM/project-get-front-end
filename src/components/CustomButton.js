@@ -25,9 +25,9 @@ const Styles = styled.button`
   }
 `
 
-const CustomButton = ({ children, onClick, type, fontSize, style, href, target }) => {
+const CustomButton = ({ children, onClick, type, fontSize, style, href, target, id }) => {
   return (
-    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} style={style}>
+    <Styles className="custom-button" onClick={onClick} type={type} fontSize={fontSize} style={style} id={id}>
       {children}
     </Styles>
   );

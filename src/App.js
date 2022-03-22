@@ -30,7 +30,7 @@ function App() {
   } else if(location.pathname === "/modify"){
     navbarComponent = <NavigationBar navbarTitle="Modificar link" settingsDisplay="d-block" logoutDisplay="d-block" />
   } else if(location.pathname === "/admin" || location.pathname === "/changepassword") {
-    footerComponent = <Footer actionText="Regresar" actionHref="/" />
+    footerComponent = <Footer actionText="Regresar" actionHref="" />
     navbarComponent = <NavigationBar brandDisplay="d-block" settingsDisplay="d-none"/>
   } else if(location.pathname === "/settings"){
     footerComponent = null
@@ -52,7 +52,8 @@ function App() {
       {navbarComponent}
       <Layout>
         <Routes>
-          <Route exact path="/" element={<StartPage />} />
+          <Route path="/" element={<AdminLogin />} />
+          <Route exact path="/link/:id" element={<StartPage />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/panel" element={<Panel/>} />
