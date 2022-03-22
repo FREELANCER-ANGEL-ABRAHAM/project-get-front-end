@@ -77,7 +77,7 @@ function LinkForm({ isModifyActive, buttonText }) {
         }
       })();
     }
-  }, [id, navigate])
+  }, [id, navigate, isModifyActive]);
 
   const handleShowImageSelector = (event) => {
     if (event.target.value === "otro") {
