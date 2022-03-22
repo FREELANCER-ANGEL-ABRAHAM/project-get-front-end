@@ -52,6 +52,7 @@ function App() {
       {navbarComponent}
       <Layout>
         <Routes>
+          <Route path="/" element={<AdminLogin />} />
           <Route exact path="/link/:id" element={<StartPage />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/changepassword" element={<ChangePassword />} />
