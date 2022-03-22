@@ -1,6 +1,5 @@
 import { Card, Form, Alert } from "react-bootstrap";
 import userLogo from "../assets/user.svg"
-import styled from "styled-components";
 import CustomButton from "../components/CustomButton";
 
 const UserForm = ({ error, errorMessage, handleSubmit, submitButton, formArr, redirect }) => {
