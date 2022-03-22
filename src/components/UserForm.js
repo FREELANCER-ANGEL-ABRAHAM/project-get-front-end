@@ -11,7 +11,7 @@ const UserForm = ({ error, errorMessage, handleSubmit, submitButton, formArr, re
         <div className="mt-5 mb-5">
           <Card className="col-12 col-md-6 col-lg-4 mx-auto shadow pt-4 text-center" >
             <Card.Body style={{ fontSize: "1em", position: "relative" }}>
-              <img src={userLogo} />
+              <img src={userLogo} alt="Logo"/>
               <h1 className=" mt-3 fw-bold">{submitButton}</h1>
               <Form method="post" onSubmit={handleSubmit} className="mt-4 testform">
                 {formArr.map(({ placeholder, name, id, type, required }, index) => (
