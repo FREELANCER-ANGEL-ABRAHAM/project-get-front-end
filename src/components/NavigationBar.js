@@ -39,7 +39,7 @@ const NavigationBar = ({navbarTitle, brandDisplay, settingsDisplay, logoWidth, l
     <Styles>
       <Navbar>
         <Navbar.Brand>
-          <a href={href || '/'}>
+          <a href={href || ''}>
             <img
               src={logo.image || webLogo}
               width={logoWidth || "57px"}
