@@ -38,8 +38,7 @@ jobs:
         host: ${{ secrets.HOST }}
         user: ${{ secrets.USER }}
         pass: ${{ secrets.PASSWORD }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        scp: |
+        first_ssh: |
           './build/*' => /root/prueba/
 
   sonarcloud:
