@@ -30,13 +30,14 @@ jobs:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
     - name: Copy folder content recursively to remote
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        source: "./build"
-        target: root/prueba
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        ARGS: "-rltgoDzvO"
+        SOURCE: "build/"
+        REMOTE_HOST: ${{ secrets.HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: ${{ secrets.SSH_USER }}
 
   sonarcloud:
     runs-on: ubuntu-latest
