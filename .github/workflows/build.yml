@@ -30,14 +30,8 @@ jobs:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
     - name: Copy folder content recursively to remote
-      uses: garygrossgarten/github-action-scp@master
-      with:
-        local: build
-        remote: root/prueba
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.PASSWORD }}
-        privateKey: ${{ secrets.PRIVATE_KEY}}
+      uses: shimataro/ssh-key-action@v2
+      run: rsync -avz ./build/ ${{ secrets.SSH_USER }}@${{ secrets.HOST }}:/root/prueba
 
   sonarcloud:
     runs-on: ubuntu-latest
