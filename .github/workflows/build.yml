@@ -34,10 +34,10 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         ARGS: "-rltgoDzvO"
-        SOURCE: "build/"
+        SOURCE: "build"
         REMOTE_HOST: ${{ secrets.HOST }}
         REMOTE_USER: ${{ secrets.SSH_USER }}
-        TARGET: "root/prueba/"
+        TARGET: "root/prueba"
 
   sonarcloud:
     runs-on: ubuntu-latest
