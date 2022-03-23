@@ -36,7 +36,7 @@ jobs:
         LASTSSH: "Doing something after copying"
       with:
         host: ${{ secrets.HOST }}
-        user: ${{ secrets.SSH_USER }}
+        user: ${{ secrets.USER }}
         pass: ${{ secrets.PASSWORD }}
         key: ${{ secrets.PRIVATE_KEY }}
         scp: |
