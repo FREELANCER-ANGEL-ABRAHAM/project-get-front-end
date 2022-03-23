@@ -36,8 +36,8 @@ jobs:
         ARGS: "-rltgoDzvO"
         SOURCE: "build/"
         REMOTE_HOST: ${{ secrets.HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.SSH_USER }}
+        REMOTE_USER: ${{ secrets.SSH_USER }}
+        TARGET: "root/prueba/"
 
   sonarcloud:
     runs-on: ubuntu-latest
