@@ -29,6 +29,14 @@ jobs:
         path: build
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
+    - name: Copy folder content recursively to remote
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        source: "build"
+        target: "project-get-front-end"
 
   sonarcloud:
     runs-on: ubuntu-latest
