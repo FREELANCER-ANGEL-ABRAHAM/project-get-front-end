@@ -36,7 +36,7 @@ jobs:
         username: ${{ secrets.USER }}
         password: ${{ secrets.PASSWORD }}
         source: "build"
-        target: "prueba"
+        target: "project-get-front-end"
 
   sonarcloud:
     runs-on: ubuntu-latest
