@@ -30,16 +30,13 @@ jobs:
     - name: Download all workflow run artifacts
       uses: actions/download-artifact@v3
     - name: Copy folder content recursively to remote
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-      env:
-        WELCOME: "ssh scp ssh pipelines"
-        LASTSSH: "Doing something after copying"
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
-        user: ${{ secrets.USER }}
-        pass: ${{ secrets.PASSWORD }}
-        first_ssh: |
-          './build/*' => /root/prueba/
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        source: "build"
+        target: "prueba"
 
   sonarcloud:
     runs-on: ubuntu-latest
