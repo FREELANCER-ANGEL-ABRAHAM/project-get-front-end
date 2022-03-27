@@ -18,12 +18,12 @@ jobs:
         with:
           node-version: '16.x'
           cache: 'npm'
-        #env:
-        # REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
       - name: Install dependencies
         run: npm ci
       - name: Create compile
         run: npm run build --if-present
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
