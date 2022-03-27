@@ -22,6 +22,10 @@ jobs:
         run: npm ci
       - name: Create compile
         run: npm run build --if-present
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: build
   sonarcloud:
     needs: test
     runs-on: ubuntu-latest
@@ -40,10 +44,6 @@ jobs:
     needs: sonarcloud
     runs-on: ubuntu-latest
     steps:
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          path: build
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
       - name: Copy folder content recursively to remote
