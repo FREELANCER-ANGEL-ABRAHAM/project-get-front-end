@@ -58,7 +58,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          source: "build"
+          source: build/*
           target: "/var/www/project-get-front-end/html/"
   sshremote:
     needs: deploy
