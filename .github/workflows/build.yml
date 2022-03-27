@@ -58,5 +58,17 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          source: "build/**"
+          source: "build"
           target: "/var/www/project-get-front-end/html/"
+  sshremote:
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cp -r /var/www/project-get-front-end/html/build/* /var/www/project-get-front-end/html
+          rm -r /var/www/project-get-front-end/html/build
