@@ -57,6 +57,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
+          password: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "html"
           target: "/var/www/project-get-front-end/"
