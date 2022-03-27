@@ -27,7 +27,7 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: html
+          name: build
           path: build
   sonarcloud:
     needs: test
@@ -58,5 +58,5 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          source: "html"
-          target: "/var/www/project-get-front-end/"
+          source: "build/*."
+          target: "/var/www/project-get-front-end/html/"
