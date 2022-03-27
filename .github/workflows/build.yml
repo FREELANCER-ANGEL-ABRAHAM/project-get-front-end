@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: '16.x'
           cache: 'npm'
+        #env:
+        # REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
       - name: Install dependencies
         run: npm ci
       - name: Create compile
@@ -56,5 +58,5 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          source: "build"
+          source: "build/*"
           target: "/var/www/project-get-front-end/html/"
