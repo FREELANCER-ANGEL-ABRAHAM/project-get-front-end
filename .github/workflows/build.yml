@@ -61,6 +61,7 @@ jobs:
           source: "build"
           target: "/var/www/project-get-front-end/html/"
   sshremote:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
