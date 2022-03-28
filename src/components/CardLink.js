@@ -50,7 +50,7 @@ const CardLink = ({ id, name, visibility, status, onStatusChange, rowActive, cou
   }
 
   const copyLink = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/link/${id}`)
+    navigator.clipboard.writeText(`${process.env.REACT_APP_API_COPY}/${id}`);
     swal("Link copiado exitosamente.", "El link se ha copiado a tu portapapeles.", "success");
   }
 

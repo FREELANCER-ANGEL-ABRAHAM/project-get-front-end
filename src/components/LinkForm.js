@@ -25,7 +25,9 @@ function LinkForm({ isModifyActive, buttonText }) {
     image: [],
     detail_result: '',
     contain_result: '',
-    count_click: 0
+    count_click: 0,
+    status: 'disable',
+    visibility: 'visible',
   }
 
   const populatedObject = {
@@ -37,6 +39,8 @@ function LinkForm({ isModifyActive, buttonText }) {
     image: [],
     detail_result: 'Detalle del resultado',
     contain_result: 'Contenido del resultado',
+    status: 'disable',
+    visibility: 'visible',
   }
 
   let myObject = {}
@@ -100,8 +104,8 @@ function LinkForm({ isModifyActive, buttonText }) {
     form_data.append('url', link.url);
     form_data.append('detail_result', link.detail_result);
     form_data.append('contain_result', link.contain_result);
-    form_data.append('status', 'disable');
-    form_data.append('visibility', 'visible');
+    form_data.append('status', link.status);
+    form_data.append('visibility', link.visibility);
     form_data.append('count_click', 0);
     try {
       console.log(link);
