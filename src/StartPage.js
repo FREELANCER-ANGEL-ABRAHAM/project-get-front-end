@@ -9,7 +9,7 @@ import AuthLinkProvider from "./service/AuthLinkProvider";
 import TokenService from "./service/TokenService";
 import './sass/components/_button.scss';
 
-const StartPage = () => {
+const StartPage = (props) => {
 
   const navigate = useNavigate()
 
@@ -67,6 +67,9 @@ const StartPage = () => {
     }
   }
   
+  const toResult = () => {
+    navigate("/result", { state: { idLink: id,} });
+  }
 
   return (
     <div className="col-12 col-md-6 col-lg-4 mx-auto p-2" style={{minHeight: "calc(100vh - 7.688rem)", display: "flex", alignItems: "center"}}>
@@ -84,7 +87,7 @@ const StartPage = () => {
           <Button
             className="w-100 mx-auto btn-lg p-4 mt-2 disabledButton" 
             variant="danger" 
-            onClick={() => navigate('/result')} 
+            onClick={() => toResult()}
             style={{ border: "none"}} 
             disabled={enableButton}>
               Continuar
