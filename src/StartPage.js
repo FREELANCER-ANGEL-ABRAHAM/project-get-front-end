@@ -120,7 +120,7 @@ const StartPage = (props) => {
           </Button>
         </Container>
       ) : (
-        <Spinner animation="border" role="status" className="text-center">
+        <Spinner animation="border" role="status" className="text-center mx-auto">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       )}
