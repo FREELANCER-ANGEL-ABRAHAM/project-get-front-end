@@ -29,8 +29,7 @@ const StartPage = (props) => {
   useEffect(() => {
     ( async () => {
       try {
-        setTimeout( async () => {
-          const response = await AuthLinkProvider.getLinkById(id);
+        const response = await AuthLinkProvider.getLinkById(id);
         if(response.status === 'disable' || response.status === 'removed'){
           const dontBeLink = {
             id: 1,
@@ -60,7 +59,6 @@ const StartPage = (props) => {
           
         }
         setLoading(true);
-        }, 1000);
       } catch (error) {
         console.error(error);
       }
